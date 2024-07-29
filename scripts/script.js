@@ -563,7 +563,7 @@ document.addEventListener('keydown', function(event) {
 // Função para adicionar múltiplos logins
 function adicionarMultiplosLogins() {
     const input = document.getElementById('multiLoginInput').value.trim();
-    const prefixo = document.getElementById("prefixo").value;
+    const prefixo = document.getElementById('multiLoginPrefixo').value;
     const unidadeSelecionada = document.getElementById("unidadeInput").value;
 
     if (input) {
@@ -573,13 +573,16 @@ function adicionarMultiplosLogins() {
         });
     }
 
-    // Fecha o modal e limpa o campo de entrada de múltiplos logins
-    document.getElementById('multiLoginModal').style.display = 'none';
+    // Limpa o campo de entrada de múltiplos logins
     document.getElementById('multiLoginInput').value = '';
 
     // Atualiza a lista visual de logins após adicionar múltiplos logins
     atualizarListaLogins();
 }
+// Atualize o evento de clique do botão "Salvar" do modal de múltiplos logins
+document.getElementById('saveMultiLogin').onclick = function() {
+    adicionarMultiplosLogins();
+};
 
 // Função auxiliar para adicionar um login específico (mesma lógica da função adicionarLogin)
 function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
@@ -628,10 +631,9 @@ function abrirModalMultiplosLogins() {
 }
 
 // Função para fechar o modal de múltiplos logins
-function fecharModalMultiplosLogins() {
+document.querySelector('#multiLoginModal .close').addEventListener('click', function() {
     document.getElementById('multiLoginModal').style.display = 'none';
-    document.getElementById('multiLoginInput').value = '';
-}
+});
 
 // Adiciona eventos aos botões do modal de múltiplos logins
 document.getElementById('saveMultiLogin').addEventListener('click', adicionarMultiplosLogins);
