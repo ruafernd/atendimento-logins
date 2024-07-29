@@ -644,5 +644,18 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+
+    // Quando o usuário clicar fora do modal, fecha o modal
+    window.onclick = function(event) {
+        const modal = document.getElementById("multiLoginModal");
+        if (event.target === modal) {
+            // Verifica se há seleção de texto ativa
+            const selection = window.getSelection().toString().trim();
+            if (!selection) {
+                modal.style.display = "none";
+            }
+        }
+    }
+
 // Adiciona evento ao botão de fechar
 document.querySelector('#multiLoginModal .close').addEventListener('click', fecharModalMultiplosLogins);
