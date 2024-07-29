@@ -443,7 +443,16 @@ body.night-mode .material-icons {
 body.night-mode .modal-content {
     background-color: #333;
     color: white;
+
 }
+
+
+.night-mode #multiLoginModal textarea {
+    background-color: #444;
+    color: white;
+    border: 1px solid #555;
+}
+
 
 body.night-mode #sugestoes {
     background-color: #444;
@@ -710,4 +719,42 @@ body.night-mode ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
 
+
+ /* Estilo básico para o modal de múltiplos logins */
+ #multiLoginModal {
+    display: none; /* Escondido por padrão */
+    position: fixed; /* Fixo na tela */
+    z-index: 1000; /* Em cima de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite rolagem se necessário */
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+}
+
+
+
+/* Botão de fechar do modal de múltiplos logins */
+#multiLoginModal .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+
+/* Estilo do textarea para múltiplos logins */
+#multiLoginModal textarea {
+    width: calc(100% - 22px); /* Ajuste a largura para compensar padding e bordas */
+    height: 200px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #ffffff; /* Fundo claro por padrão */
+    color: black; /* Texto preto por padrão */
+    border: 1px solid #ccc;
+    resize: none; /* Impede redimensionamento */
+    box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
+}
 

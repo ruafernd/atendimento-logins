@@ -558,3 +558,91 @@ document.addEventListener('keydown', function(event) {
         exportLoginsToCSV();
     }
 });
+
+
+// Função para adicionar múltiplos logins
+function adicionarMultiplosLogins() {
+    const input = document.getElementById('multiLoginInput').value.trim();
+    const prefixo = document.getElementById("prefixo").value;
+    const unidadeSelecionada = document.getElementById("unidadeInput").value;
+
+    if (input) {
+        const logins = input.split('\n').map(login => login.trim()).filter(login => login);
+        logins.forEach(login => {
+            adicionarLoginEspecifico(login, prefixo, unidadeSelecionada);
+        });
+    }
+
+    // Fecha o modal e limpa o campo de entrada de múltiplos logins
+    document.getElementById('multiLoginModal').style.display = 'none';
+    document.getElementById('multiLoginInput').value = '';
+
+    // Atualiza a lista visual de logins após adicionar múltiplos logins
+    atualizarListaLogins();
+}
+
+// Função auxiliar para adicionar um login específico (mesma lógica da função adicionarLogin)
+function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
+    const usuarioFormatado = usuario.trim().replace(/\s+/g, ' ');
+    const unidadeInput = document.getElementById("unidadeInput").value.trim();
+
+    if (!usuarioFormatado || (!prefixo && prefixo !== "Nenhum") || !unidadeSelecionada) {
+        
+        return;
+    }
+
+    let nomeFormatado = "";
+
+    if (prefixo !== "Nenhum") {
+        nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(prefixo)} ${formatarNomePrimeiraLetraMaiuscula(usuarioFormatado)}`;
+    } else {
+        nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(usuarioFormatado)}`;
+    }
+
+    let partesNome = usuarioFormatado.split(' ');
+    let primeiroNome = partesNome[0].toLowerCase();
+    let primeiraLetraSegundoNome = partesNome[partesNome.length - 1].toLowerCase().charAt(0);
+
+    let emailDominio = obterDominioEmail(unidadeSelecionada);
+
+    let emailFinal = "";
+
+    if (prefixo !== "Nenhum") {
+        emailFinal = `${prefixo.toLowerCase().replace('.', '')}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}@${removerAcentos(emailDominio)}`;
+    } else {
+        emailFinal = `${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}@${removerAcentos(emailDominio)}`;
+    }
+
+    let senha = `${prefixo !== "Nenhum" ? prefixo.toLowerCase().replace('.', '') : ""}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}`.toLowerCase();
+
+    // Adiciona o login ao array listaUsuarios
+    listaUsuarios.push({"Usuário": nomeFormatado, "Senha": senha, "Email": emailFinal});
+
+    // Adiciona a operação ao histórico de adições
+    historicoAdicoes.push(listaUsuarios.length - 1);
+}
+
+// Função para abrir o modal de múltiplos logins
+function abrirModalMultiplosLogins() {
+    document.getElementById('multiLoginModal').style.display = 'block';
+}
+
+// Função para fechar o modal de múltiplos logins
+function fecharModalMultiplosLogins() {
+    document.getElementById('multiLoginModal').style.display = 'none';
+    document.getElementById('multiLoginInput').value = '';
+}
+
+// Adiciona eventos aos botões do modal de múltiplos logins
+document.getElementById('saveMultiLogin').addEventListener('click', adicionarMultiplosLogins);
+
+// Adiciona evento para abrir o modal com "Ctrl + ,"
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.key === ',') {
+        event.preventDefault();
+        abrirModalMultiplosLogins();
+    }
+});
+
+// Adiciona evento ao botão de fechar
+document.querySelector('#multiLoginModal .close').addEventListener('click', fecharModalMultiplosLogins);
