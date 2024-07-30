@@ -640,7 +640,7 @@ document.getElementById('saveMultiLogin').addEventListener('click', adicionarMul
 
 // Adiciona evento para abrir o modal com "Ctrl + ,"
 document.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && event.key === ',') {
+    if (event.ctrlKey && event.key === '\\') {
         event.preventDefault();
         abrirModalMultiplosLogins();
     }
