@@ -94,6 +94,7 @@ const unidadesEmails = [
     { unidade: "CLINICA DIGEST CG - GERAL2", email: "clinicadigest.com", cnpj: "17.963.868/0001-04", servidor: "Geral2"},
     { unidade: "PREZECOR SANTANA - GERAL2", email: "prezecor.com", cnpj: "02.135.477/0001-00", servidor: "Geral2"},
     { unidade: "PREZECOR FREGUESIA - GERAL2", email: "prezecorfreguesia.com", cnpj: "56.096.860/0001-25", servidor: "Geral2"},
+    { unidade: "CLINICA CIRURGICA EDUARDO PACHU - GERAL2", email: "clinicacirurgica.com", cnpj: "27.168.784/0001-18", servidor: "Geral2"},
     { unidade: "AMOR SAUDE BIRIGUI - SP", email: "amorsaudebirigui.com", cnpj: "33.309.869/0001-71", servidor: "SP"},
     { unidade: "AMOR SAUDE ITU - SP", email: "amorsaudeitu.com", cnpj: "09.286.567/0002-21", servidor: "SP"},
     { unidade: "AMOR SAUDE GUARULHOS PARQUE SAO LUIZ - SP", email:"amorsaudeguarulhos.com", cnpj: "14.650.152/0001-44", servidor: "SP"},
