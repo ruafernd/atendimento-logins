@@ -496,7 +496,6 @@
 
     function limparUnidade() {
         if (unidadeSelecionada === "") {
-            alert("Selecione uma unidade primeiro!");
             return;
         }
     
