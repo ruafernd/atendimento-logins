@@ -79,11 +79,8 @@
     document.getElementById("reloadPage").addEventListener("click", function() {
         location.reload();
     });
-    document.getElementById("reloadPage").addEventListener("click", function() {
-        location.reload();
-    });
-    
 
+    
 
 
 
@@ -508,6 +505,7 @@
         unidadeSelecionada = "";
         document.getElementById("unidadeInput").value = "";
         document.getElementById("email").value = "";
+
 
     }
     

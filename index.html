@@ -40,11 +40,11 @@
             </div>
 
             <div class="input-field no-label">
-                <i class="material-icons">apartment</i>
-                <input type="text" id="unidadeInput" autocomplete="off" autocorrect="off" class="input-field" placeholder="Unidade">
+                <i class="material-icons" id="limparUnidadeIcon">apartment</i>
+                <input type="text" id="unidadeInput" autocomplete="off" autocorrect="off" class="input-field" placeholder="Unidade" ondblclick="limparUnidade()">
                 <div id="sugestoes"></div>
             </div>
-
+            
             <div>
                 <div class="input-field no-label">
                     <i class="material-icons">email</i>
@@ -59,7 +59,7 @@
                 </div>
                 <div>
                     <button onclick="copiarLista()">Copiar Usuários</button>
-                    <button onclick="limparUnidade()">Limpar Unidade</button>
+                    <button onclick="abrirModalMultiplosLogins()">Logins em massa</button>
                 </div>
             </div>
 
