@@ -132,49 +132,58 @@
         const usuario = usuarioInput.value.trim().replace(/\s+/g, ' '); // Remove espaços extras entre palavras
         const prefixo = document.getElementById("prefixo").value;
         const unidadeInput = document.getElementById("unidadeInput").value.trim();
-
+    
         if (!usuario || (!prefixo && prefixo !== "Nenhum") || !unidadeSelecionada) {
             alert("Preencha todos os campos antes de adicionar um login.");
             return;
         }
+    
+        // Extraindo o nome e a especialização
+        const [nomeUsuario, especializacao = ""] = usuario.split(' - ');
 
+         // Formatar a especialização com a primeira letra maiúscula
+      // Formatar a especialização com a primeira letra maiúscula
+      const especializacaoFormatada = especializacao.charAt(0).toUpperCase() + especializacao.slice(1).toLowerCase();
+    
         let nomeFormatado = "";
-
+    
         if (prefixo !== "Nenhum") {
-            nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(prefixo)} ${formatarNomePrimeiraLetraMaiuscula(usuario)}`;
+            nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(prefixo)} ${formatarNomePrimeiraLetraMaiuscula(nomeUsuario)}`;
         } else {
-            nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(usuario)}`;
+            nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(nomeUsuario)}`;
         }
-
-        let partesNome = usuario.split(' ');
+    
+        let partesNome = nomeUsuario.split(' ');
         let primeiroNome = partesNome[0].toLowerCase();
         let primeiraLetraSegundoNome = partesNome[partesNome.length - 1].toLowerCase().charAt(0);
-
+    
         let emailDominio = obterDominioEmail(unidadeSelecionada);
-
+    
         let emailFinal = "";
-
+    
         if (prefixo !== "Nenhum") {
             emailFinal = `${prefixo.toLowerCase().replace('.', '')}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}@${removerAcentos(emailDominio)}`;
         } else {
             emailFinal = `${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}@${removerAcentos(emailDominio)}`;
         }
-
+    
         let senha = `${prefixo !== "Nenhum" ? prefixo.toLowerCase().replace('.', '') : ""}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}`.toLowerCase();
-
+    
         // Adiciona o login ao array listaUsuarios
-        listaUsuarios.push({"Usuário": nomeFormatado, "Senha": senha, "Email": emailFinal});
-
+        listaUsuarios.push({"Usuário": nomeFormatado, "Especialização": especializacaoFormatada, "Senha": senha, "Email": emailFinal});
+    
         // Adiciona a operação ao histórico de adições
         historicoAdicoes.push(listaUsuarios.length - 1);
-
+    
         // Atualiza a lista visual de logins
         atualizarListaLogins();
-
+    
         // Limpa os campos de entrada após adicionar o login
         usuarioInput.value = "";
         document.getElementById("sugestoes").innerHTML = "";
     }
+    
+    
 
     // Função para desfazer a adição do último login
     function desfazerAdicaoLogin() {
@@ -312,130 +321,150 @@
         }
     }
 
-    function atualizarListaLogins() {
-        const listaLogins = document.getElementById("listaLogins");
-        listaLogins.innerHTML = "";
+// Função para atualizar a lista visual de logins
+function atualizarListaLogins() {
+    const listaLogins = document.getElementById("listaLogins");
+    listaLogins.innerHTML = "";
 
-        
-    
-        if (listaUsuarios.length > 0) {
-            const unidadeInfo = unidadesEmails.find(item => item.unidade === unidadeSelecionada);
-            if (unidadeInfo && unidadeInfo.servidor) {
-                let servidorInfo = document.createElement("div");
-                servidorInfo.classList.add("servidor-info");
-                servidorInfo.textContent = "Servidor " + unidadeInfo.servidor;
-                servidorInfo.style.textAlign = "center";
-                servidorInfo.style.color = "black";
-                servidorInfo.style.fontSize = "11px";
-                servidorInfo.style.paddingTop = "0px";
-                servidorInfo.style.paddingBottom = "0px";
-                listaLogins.appendChild(servidorInfo);
-
-    
-                
-            }
-        }
-    
-        for (let i = 0; i < listaUsuarios.length; i++) {
-            let login = listaUsuarios[i];
-            let loginItem = document.createElement("div");
-            loginItem.classList.add("login-item");
-    
-            let usuarioInfo = document.createElement("div");
-            usuarioInfo.textContent = `Usuário: ${login['Usuário']}`;
-    
-            let copyUsuarioIcon = document.createElement("span");
-            copyUsuarioIcon.classList.add("material-icons");
-            copyUsuarioIcon.classList.add("copy-icon");
-            copyUsuarioIcon.textContent = "content_copy";
-            copyUsuarioIcon.addEventListener("click", function() {
-                copyToClipboard(login['Usuário'], copyUsuarioIcon);
-            });
-    
-            let emailInfo = document.createElement("div");
-            emailInfo.textContent = `Email: ${login['Email']}`;
-    
-            let copyEmailIcon = document.createElement("span");
-            copyEmailIcon.classList.add("material-icons");
-            copyEmailIcon.classList.add("copy-icon");
-            copyEmailIcon.textContent = "content_copy";
-            copyEmailIcon.addEventListener("click", function() {
-                copyToClipboard(login['Email'], copyEmailIcon);
-            });
-    
-            let senhaInfo = document.createElement("div");
-            senhaInfo.textContent = `Senha: ${login['Senha']}`;
-    
-            let copySenhaIcon = document.createElement("span");
-            copySenhaIcon.classList.add("material-icons");
-            copySenhaIcon.classList.add("copy-icon");
-            copySenhaIcon.textContent = "content_copy";
-            copySenhaIcon.addEventListener("click", function() {
-                const userInfo = `*---------------*\n*Usuário: ${login['Usuário']}*\nEmail: ${login['Email']}\nSenha: ${login['Senha']}`;
-                copyToClipboard(userInfo, copySenhaIcon);
-            });
-    
-            let actionsContainer = document.createElement("div");
-            actionsContainer.classList.add("actions-container");
-    
-            let reloadIcon = document.createElement("span");
-            reloadIcon.classList.add("material-icons");
-            reloadIcon.classList.add("reload-icon");
-            reloadIcon.textContent = "refresh";
-            reloadIcon.addEventListener("click", function() {
-                randomizeFirstLetterOfSurname(i);
-            });
-    
-            let deleteButton = document.createElement("span");
-            deleteButton.classList.add("material-icons");
-            deleteButton.classList.add("delete-icon");
-            deleteButton.textContent = "delete";
-            deleteButton.style.color = "red";
-            deleteButton.style.fontSize = "16px";
-            deleteButton.addEventListener("click", function() {
-                excluirLogin(i);
-            });
-    
-            let editButton = document.createElement("span");
-            editButton.classList.add("material-icons");
-            editButton.classList.add("edit-icon");
-            editButton.textContent = "edit";
-            editButton.style.color = "blue";
-            editButton.style.fontSize = "16px";
-            editButton.addEventListener("click", function() {
-                editarLogin(i);
-            });
-    
-            actionsContainer.appendChild(editButton);
-            actionsContainer.appendChild(deleteButton);
-            actionsContainer.appendChild(reloadIcon);
-            actionsContainer.appendChild(copySenhaIcon);  // Mover o ícone de copiar senha aqui
-    
-            let userInfoContainer = document.createElement("div");
-            userInfoContainer.classList.add("user-info-container");
-            userInfoContainer.appendChild(usuarioInfo);
-            userInfoContainer.appendChild(copyUsuarioIcon);
-    
-            let emailInfoContainer = document.createElement("div");
-            emailInfoContainer.classList.add("user-info-container");
-            emailInfoContainer.appendChild(emailInfo);
-            emailInfoContainer.appendChild(copyEmailIcon);
-    
-            let senhaInfoContainer = document.createElement("div");
-            senhaInfoContainer.classList.add("user-info-container");
-            senhaInfoContainer.appendChild(senhaInfo);
-    
-            loginItem.appendChild(userInfoContainer);
-            loginItem.appendChild(emailInfoContainer);
-            loginItem.appendChild(senhaInfoContainer);
-            loginItem.appendChild(actionsContainer);
-    
-            let linhaSeparacao = document.createElement("hr");
-            listaLogins.appendChild(linhaSeparacao);
-    
-            listaLogins.appendChild(loginItem);
+    if (listaUsuarios.length > 0) {
+        const unidadeInfo = unidadesEmails.find(item => item.unidade === unidadeSelecionada);
+        if (unidadeInfo && unidadeInfo.servidor) {
+            let servidorInfo = document.createElement("div");
+            servidorInfo.classList.add("servidor-info"); 
+            servidorInfo.textContent = "Servidor " + unidadeInfo.servidor;
+            servidorInfo.style.textAlign = "center";
+            servidorInfo.style.color = "black";
+            servidorInfo.style.fontSize = "11px";
+            servidorInfo.style.paddingTop = "0px";
+            servidorInfo.style.paddingBottom = "0px";
+            listaLogins.appendChild(servidorInfo);
         }
     }
+
+    for (let i = 0; i < listaUsuarios.length; i++) {
+        let login = listaUsuarios[i];
+        let loginItem = document.createElement("div");
+        loginItem.classList.add("login-item");
+
+        let usuarioInfo = document.createElement("div");
+        usuarioInfo.textContent = `Usuário: ${login['Usuário']}`;
+
+        let copyUsuarioIcon = document.createElement("span");
+        copyUsuarioIcon.classList.add("material-icons");
+        copyUsuarioIcon.classList.add("copy-icon");
+        copyUsuarioIcon.textContent = "content_copy";
+        copyUsuarioIcon.addEventListener("click", function() {
+            copyToClipboard(login['Usuário'], copyUsuarioIcon);
+        });
+
+        let emailInfo = document.createElement("div");
+        emailInfo.textContent = `Email: ${login['Email']}`;
+
+        let copyEmailIcon = document.createElement("span");
+        copyEmailIcon.classList.add("material-icons");
+        copyEmailIcon.classList.add("copy-icon");
+        copyEmailIcon.textContent = "content_copy";
+        copyEmailIcon.addEventListener("click", function() {
+            copyToClipboard(login['Email'], copyEmailIcon);
+        });
+
+        let senhaInfo = document.createElement("div");
+        senhaInfo.textContent = `Senha: ${login['Senha']}`;
+
+        let copySenhaIcon = document.createElement("span");
+        copySenhaIcon.classList.add("material-icons");
+        copySenhaIcon.classList.add("copy-icon");
+        copySenhaIcon.textContent = "content_copy";
+        copySenhaIcon.addEventListener("click", function() {
+            const userInfo = `*---------------*\n*Usuário: ${login['Usuário']}*\nEmail: ${login['Email']}\nSenha: ${login['Senha']}`;
+            copyToClipboard(userInfo, copySenhaIcon);
+        });
+
+        let actionsContainer = document.createElement("div");
+        actionsContainer.classList.add("actions-container");
+
+        let reloadIcon = document.createElement("span");
+        reloadIcon.classList.add("material-icons");
+        reloadIcon.classList.add("reload-icon");
+        reloadIcon.textContent = "refresh";
+        reloadIcon.addEventListener("click", function() {
+            randomizeFirstLetterOfSurname(i);
+        });
+
+        let deleteButton = document.createElement("span");
+        deleteButton.classList.add("material-icons");
+        deleteButton.classList.add("delete-icon");
+        deleteButton.textContent = "delete";
+        deleteButton.style.color = "red";
+        deleteButton.style.fontSize = "16px";
+        deleteButton.addEventListener("click", function() {
+            excluirLogin(i);
+        });
+
+        let editButton = document.createElement("span");
+        editButton.classList.add("material-icons");
+        editButton.classList.add("edit-icon");
+        editButton.textContent = "edit";
+        editButton.style.color = "blue";
+        editButton.style.fontSize = "16px";
+        editButton.addEventListener("click", function() {
+            editarLogin(i);
+        });
+
+        actionsContainer.appendChild(editButton);
+        actionsContainer.appendChild(deleteButton);
+        actionsContainer.appendChild(reloadIcon);
+        actionsContainer.appendChild(copySenhaIcon);  // Mover o ícone de copiar senha aqui
+
+        let userInfoContainer = document.createElement("div");
+        userInfoContainer.classList.add("user-info-container");
+        userInfoContainer.appendChild(usuarioInfo);
+        userInfoContainer.appendChild(copyUsuarioIcon);
+
+        let emailInfoContainer = document.createElement("div");
+        emailInfoContainer.classList.add("user-info-container");
+        emailInfoContainer.appendChild(emailInfo);
+        emailInfoContainer.appendChild(copyEmailIcon);
+
+        let senhaInfoContainer = document.createElement("div");
+        senhaInfoContainer.classList.add("user-info-container");
+        senhaInfoContainer.appendChild(senhaInfo);
+
+        loginItem.appendChild(userInfoContainer);
+
+        // Verificar se há especialização antes de adicioná-la
+        if (login['Especialização']) {
+            let especializacaoInfo = document.createElement("div");
+            let especializacao = login['Especialização'];
+            // Capitalize the first letter of the especializacao
+            especializacaoInfo.textContent = `Especialização: ${especializacao.charAt(0).toUpperCase() + especializacao.slice(1)}`;
+
+            let copyEspecializacaoIcon = document.createElement("span");
+            copyEspecializacaoIcon.classList.add("material-icons");
+            copyEspecializacaoIcon.classList.add("copy-icon");
+            copyEspecializacaoIcon.textContent = "content_copy";
+            copyEspecializacaoIcon.addEventListener("click", function() {
+                copyToClipboard(login['Especialização'], copyEspecializacaoIcon);
+            });
+
+            let especializacaoContainer = document.createElement("div");
+            especializacaoContainer.classList.add("user-info-container");
+            especializacaoContainer.appendChild(especializacaoInfo);
+            especializacaoContainer.appendChild(copyEspecializacaoIcon);
+            loginItem.appendChild(especializacaoContainer);
+        }
+
+        loginItem.appendChild(emailInfoContainer);
+        loginItem.appendChild(senhaInfoContainer);
+        loginItem.appendChild(actionsContainer);
+
+        let linhaSeparacao = document.createElement("hr");
+        listaLogins.appendChild(linhaSeparacao);
+
+        listaLogins.appendChild(loginItem);
+    }
+}
+
     
     function randomizeFirstLetterOfSurname(index) {
         let login = listaUsuarios[index];
@@ -525,10 +554,10 @@
 // Função para exportar os logins para CSV e ajustar o tamanho das colunas
 function exportLoginsToCSV() {
     const logins = listaUsuarios; 
-    let csvContent = [["Usuário", "Email", "Senha"]];
+    let csvContent = [["Usuário", "Email", "Senha", "Especialização"]];
 
     logins.forEach(login => {
-        csvContent.push([login.Usuário, login.Email, login.Senha]);
+        csvContent.push([login.Usuário, login.Email, login.Senha, login.Especialização]);
     });
 
     // Criar uma nova planilha
@@ -536,7 +565,8 @@ function exportLoginsToCSV() {
     const wsCols = [
         { wch: Math.max(...csvContent.map(row => row[0].length)) }, // Usuário
         { wch: Math.max(...csvContent.map(row => row[1].length)) }, // Email
-        { wch: Math.max(...csvContent.map(row => row[2].length)) }  // Senha
+        { wch: Math.max(...csvContent.map(row => row[2].length)) },  // Senha
+        { wch: Math.max(...csvContent.map(row => row[3].length)) }  // Especialização
     ];
     ws['!cols'] = wsCols;
 
@@ -557,7 +587,7 @@ document.addEventListener('keydown', function(event) {
 });
 
 
-// Função para adicionar múltiplos logins
+// Atualize a função para adicionar múltiplos logins
 function adicionarMultiplosLogins() {
     const input = document.getElementById('multiLoginInput').value.trim();
     const prefixo = document.getElementById('multiLoginPrefixo').value;
@@ -581,13 +611,14 @@ document.getElementById('saveMultiLogin').onclick = function() {
     adicionarMultiplosLogins();
 };
 
-// Função auxiliar para adicionar um login específico (mesma lógica da função adicionarLogin)
+// Função auxiliar para adicionar um login específico (com formatação da especialização)
 function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
-    const usuarioFormatado = usuario.trim().replace(/\s+/g, ' ');
+    const [nomeUsuario, especializacao = ""] = usuario.trim().split(' - ');
+    const usuarioFormatado = nomeUsuario.trim();
+    const especializacaoFormatada = especializacao.trim().charAt(0).toUpperCase() + especializacao.trim().slice(1).toLowerCase();
     const unidadeInput = document.getElementById("unidadeInput").value.trim();
 
     if (!usuarioFormatado || (!prefixo && prefixo !== "Nenhum") || !unidadeSelecionada) {
-        
         return;
     }
 
@@ -601,10 +632,11 @@ function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
 
     let partesNome = usuarioFormatado.split(' ');
     let primeiroNome = partesNome[0].toLowerCase();
-    let primeiraLetraSegundoNome = partesNome[partesNome.length - 1].toLowerCase().charAt(0);
+    let primeiraLetraSegundoNome = partesNome.length > 1 ? partesNome[1].toLowerCase().charAt(0) : '';
 
     let emailDominio = obterDominioEmail(unidadeSelecionada);
 
+    // Construção do email e senha não deve incluir a especialização
     let emailFinal = "";
 
     if (prefixo !== "Nenhum") {
@@ -616,11 +648,12 @@ function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
     let senha = `${prefixo !== "Nenhum" ? prefixo.toLowerCase().replace('.', '') : ""}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}`.toLowerCase();
 
     // Adiciona o login ao array listaUsuarios
-    listaUsuarios.push({"Usuário": nomeFormatado, "Senha": senha, "Email": emailFinal});
+    listaUsuarios.push({"Usuário": nomeFormatado, "Especialização": especializacaoFormatada, "Senha": senha, "Email": emailFinal});
 
     // Adiciona a operação ao histórico de adições
     historicoAdicoes.push(listaUsuarios.length - 1);
 }
+
 
 // Função para abrir o modal de múltiplos logins
 function abrirModalMultiplosLogins() {
