@@ -129,28 +129,32 @@
 
     function adicionarLogin() {
         const usuarioInput = document.getElementById("usuario");
-        const usuario = usuarioInput.value.trim().replace(/\s+/g, ' '); // Remove espaços extras entre palavras
-        const prefixo = document.getElementById("prefixo").value;
+        let usuario = usuarioInput.value.trim().replace(/\s+/g, ' '); // Remove espaços extras entre palavras
+        const prefixoSelecionado = document.getElementById("prefixo").value;
         const unidadeInput = document.getElementById("unidadeInput").value.trim();
     
-        if (!usuario || (!prefixo && prefixo !== "Nenhum") || !unidadeSelecionada) {
+        if (!usuario || (!prefixoSelecionado && prefixoSelecionado !== "Nenhum") || !unidadeSelecionada) {
             alert("Preencha todos os campos antes de adicionar um login.");
             return;
         }
     
+        // Remover o prefixo do input se ele coincidir com o prefixo selecionado
+        if (prefixoSelecionado === "Dr.") {
+            usuario = usuario.replace(/^dr\.?\s+/i, '').trim();
+        } else if (prefixoSelecionado === "Dra.") {
+            usuario = usuario.replace(/^dra\.?\s+/i, '').trim();
+        }
+    
         // Extraindo o nome e a especialização
         const [nomeUsuario, especializacao = ""] = usuario.split(' - ');
-
-         // Formatar a especialização com a primeira letra maiúscula
-      // Formatar a especialização com a primeira letra maiúscula
-      const especializacaoFormatada = especializacao.charAt(0).toUpperCase() + especializacao.slice(1).toLowerCase();
     
-        let nomeFormatado = "";
+        // Formatar a especialização com a primeira letra maiúscula
+        const especializacaoFormatada = especializacao.charAt(0).toUpperCase() + especializacao.slice(1).toLowerCase();
     
-        if (prefixo !== "Nenhum") {
-            nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(prefixo)} ${formatarNomePrimeiraLetraMaiuscula(nomeUsuario)}`;
-        } else {
-            nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(nomeUsuario)}`;
+        // Formatar o nome com o prefixo selecionado
+        let nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(nomeUsuario)}`;
+        if (prefixoSelecionado !== "Nenhum") {
+            nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(prefixoSelecionado)} ${nomeFormatado}`;
         }
     
         let partesNome = nomeUsuario.split(' ');
@@ -159,15 +163,9 @@
     
         let emailDominio = obterDominioEmail(unidadeSelecionada);
     
-        let emailFinal = "";
+        let emailFinal = `${prefixoSelecionado !== "Nenhum" ? prefixoSelecionado.toLowerCase().replace('.', '') : ""}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}@${removerAcentos(emailDominio)}`;
     
-        if (prefixo !== "Nenhum") {
-            emailFinal = `${prefixo.toLowerCase().replace('.', '')}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}@${removerAcentos(emailDominio)}`;
-        } else {
-            emailFinal = `${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}@${removerAcentos(emailDominio)}`;
-        }
-    
-        let senha = `${prefixo !== "Nenhum" ? prefixo.toLowerCase().replace('.', '') : ""}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}`.toLowerCase();
+        let senha = `${prefixoSelecionado !== "Nenhum" ? prefixoSelecionado.toLowerCase().replace('.', '') : ""}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}`.toLowerCase();
     
         // Adiciona o login ao array listaUsuarios
         listaUsuarios.push({"Usuário": nomeFormatado, "Especialização": especializacaoFormatada, "Senha": senha, "Email": emailFinal});
@@ -182,6 +180,20 @@
         usuarioInput.value = "";
         document.getElementById("sugestoes").innerHTML = "";
     }
+    
+    document.getElementById("usuario").addEventListener("input", function() {
+        const usuarioInput = document.getElementById("usuario");
+        const prefixoSelect = document.getElementById("prefixo");
+        let valor = usuarioInput.value.trim();
+    
+        if (/^dr\.?\s+/i.test(valor)) {
+            prefixoSelect.value = "Dr.";
+            usuarioInput.value = valor.replace(/^dr\.?\s+/i, '');
+        } else if (/^dra\.?\s+/i.test(valor)) {
+            prefixoSelect.value = "Dra.";
+            usuarioInput.value = valor.replace(/^dra\.?\s+/i, '');
+        } 
+    });
     
     
 
@@ -613,14 +625,24 @@ document.getElementById('saveMultiLogin').onclick = function() {
 
 // Função auxiliar para adicionar um login específico (com formatação da especialização)
 function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
-    const [nomeUsuario, especializacao = ""] = usuario.trim().split(' - ');
-    const usuarioFormatado = nomeUsuario.trim();
-    const especializacaoFormatada = especializacao.trim().charAt(0).toUpperCase() + especializacao.trim().slice(1).toLowerCase();
     const unidadeInput = document.getElementById("unidadeInput").value.trim();
 
-    if (!usuarioFormatado || (!prefixo && prefixo !== "Nenhum") || !unidadeSelecionada) {
+    if (!usuario || (!prefixo && prefixo !== "Nenhum") || !unidadeSelecionada) {
         return;
     }
+
+    // Remover o prefixo do input se ele coincidir com o prefixo selecionado
+    if (prefixo === "Dr.") {
+        usuario = usuario.replace(/^dr\.?\s+/i, '').trim();
+    } else if (prefixo === "Dra.") {
+        usuario = usuario.replace(/^dra\.?\s+/i, '').trim();
+    }
+
+    // Extraindo o nome e a especialização
+    const [nomeUsuario, especializacao = ""] = usuario.split(' - ');
+
+    const usuarioFormatado = nomeUsuario.trim();
+    const especializacaoFormatada = especializacao.trim().charAt(0).toUpperCase() + especializacao.trim().slice(1).toLowerCase();
 
     let nomeFormatado = "";
 
