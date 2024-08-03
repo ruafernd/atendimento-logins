@@ -654,7 +654,7 @@ function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
 
     let partesNome = usuarioFormatado.split(' ');
     let primeiroNome = partesNome[0].toLowerCase();
-    let primeiraLetraSegundoNome = partesNome.length > 1 ? partesNome[1].toLowerCase().charAt(0) : '';
+    let ultimaLetraUltimoNome = partesNome.length > 1 ? partesNome[partesNome.length - 1].toLowerCase().charAt(0) : '';
 
     let emailDominio = obterDominioEmail(unidadeSelecionada);
 
@@ -662,12 +662,12 @@ function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
     let emailFinal = "";
 
     if (prefixo !== "Nenhum") {
-        emailFinal = `${prefixo.toLowerCase().replace('.', '')}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}@${removerAcentos(emailDominio)}`;
+        emailFinal = `${prefixo.toLowerCase().replace('.', '')}${removerAcentos(primeiroNome)}${removerAcentos(ultimaLetraUltimoNome)}@${removerAcentos(emailDominio)}`;
     } else {
-        emailFinal = `${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}@${removerAcentos(emailDominio)}`;
+        emailFinal = `${removerAcentos(primeiroNome)}${removerAcentos(ultimaLetraUltimoNome)}@${removerAcentos(emailDominio)}`;
     }
 
-    let senha = `${prefixo !== "Nenhum" ? prefixo.toLowerCase().replace('.', '') : ""}${removerAcentos(primeiroNome)}${removerAcentos(primeiraLetraSegundoNome)}`.toLowerCase();
+    let senha = `${prefixo !== "Nenhum" ? prefixo.toLowerCase().replace('.', '') : ""}${removerAcentos(primeiroNome)}${removerAcentos(ultimaLetraUltimoNome)}`.toLowerCase();
 
     // Adiciona o login ao array listaUsuarios
     listaUsuarios.push({"Usuário": nomeFormatado, "Especialização": especializacaoFormatada, "Senha": senha, "Email": emailFinal});
@@ -675,6 +675,7 @@ function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
     // Adiciona a operação ao histórico de adições
     historicoAdicoes.push(listaUsuarios.length - 1);
 }
+
 
 
 // Função para abrir o modal de múltiplos logins
