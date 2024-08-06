@@ -368,6 +368,7 @@ const unidadesEmails = [
     { unidade: "AMOR SAUDE FORTALEZA CENTRO - NE", email: "amorsaudefortaleza1.com", cnpj: "06.805.154/0001-37", servidor: "NE"},
     { unidade: "AMOR SAUDE FORTALEZA PSJ - NE", email: "amorsaudepsj.com", cnpj: "20.707.858/0002-89", servidor: "NE"},
     { unidade: "AMOR SAUDE NATAL - NE", email: "amorsaudenatal.com", cnpj: "37.454.596/0001-00", servidor: "NE"},
+    { unidade: "AMOR SAUDE PARANGABA - NE", email: "amsparangaba.com", cnpj: "50.974.396/0001-46", servidor: "NE"},
     { unidade: "AMOR SAUDE RUSSAS - NE", email: "asrussas.com", cnpj: "38.229.983/0001-05", servidor: "NE"},
     { unidade: "AMOR SAUDE CAMPINA GRANDE - NE", email: "ascampinagrande.com", cnpj: "41.553.616/0001-77", servidor: "NE"},
     { unidade: "AMOR SAUDE PATOS - NE", email: "aspatos.com", cnpj: "41.167.390/0001-76", servidor: "NE"},
