@@ -66,7 +66,7 @@ const unidadesEmails = [
     { unidade: "INSTITUTO HOSP. DE TRATAMENTO DA VISAO - GERAL", email: "itv.com.br", cnpj: "05.574.910/0001-00", servidor: "Geral"},
     { unidade: "SEJA MAXX - GERAL", email: "sejamaxx.com", cnpj: "02.995.233/0001-05", servidor: "Geral"},
     { unidade: "INSTITUTO ODONTO-RADIOLOGICO DE NATAL - GERAL", email: "iorn.com", cnpj: "41.001.744/0001-08", servidor: "Geral"},
-    { unidade: "UNIMAMA - GERAL", email: "Unimama.com", cnpj: "41.142.571/0002-29", servidor: "Geral"},
+    { unidade: "UNIMAMA - GERAL", email: "unimama.com", cnpj: "41.142.571/0002-29", servidor: "Geral"},
     { unidade: "RADIOCRANIO CENTRO DE RADIOLOGIA - GERAL", email: "radiocranio.com.br", cnpj: "01.299.313/0001-55", servidor: "Geral"},
     { unidade: "GASTROCENTER - GERAL", email: "gastrocenter.com", cnpj: "00.000.000/0000-00", servidor: "Geral"},
     { unidade: "UNIODONTO JOAO PESSOA - GERAL", email: "uniodontojp.com.br", cnpj: "12.963.462/0001-60", servidor: "Geral"},
