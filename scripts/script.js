@@ -143,7 +143,12 @@
             usuario = usuario.replace(/^dr\.?\s+/i, '').trim();
         } else if (prefixoSelecionado === "Dra.") {
             usuario = usuario.replace(/^dra\.?\s+/i, '').trim();
+        } else if (prefixoSelecionado === "Tec.") {
+            usuario = usuario.replace(/^tec\.?\s+/i, '').trim();
+        } else if (prefixoSelecionado === "Enf.") {
+            usuario = usuario.replace(/^tec\.?\s+/i, '').trim();
         }
+        
     
         // Extraindo o nome e a especialização
         const [nomeUsuario, especializacao = ""] = usuario.split(' - ');
@@ -181,6 +186,7 @@
         document.getElementById("sugestoes").innerHTML = "";
     }
     
+    
     document.getElementById("usuario").addEventListener("input", function() {
         const usuarioInput = document.getElementById("usuario");
         const prefixoSelect = document.getElementById("prefixo");
@@ -192,8 +198,16 @@
         } else if (/^dra\.?\s+/i.test(valor)) {
             prefixoSelect.value = "Dra.";
             usuarioInput.value = valor.replace(/^dra\.?\s+/i, '');
+        } else if (/^tec\.?\s+/i.test(valor)) {
+            prefixoSelect.value = "Tec.";
+            usuarioInput.value = valor.replace(/^tec\.?\s+/i, '');
+        } else if (/^enf\.?\s+/i.test(valor)) {
+            prefixoSelect.value = "Enf.";
+            usuarioInput.value = valor.replace(/^enf\.?\s+/i, '');
         } 
+        
     });
+    
     
     
 
