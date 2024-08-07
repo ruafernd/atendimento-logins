@@ -617,7 +617,12 @@ document.addEventListener('keydown', function(event) {
 function adicionarMultiplosLogins() {
     const input = document.getElementById('multiLoginInput').value.trim();
     const prefixo = document.getElementById('multiLoginPrefixo').value;
-    const unidadeSelecionada = document.getElementById("unidadeInput").value;
+    const unidadeSelecionada = document.getElementById("unidadeInput").value.trim();
+
+    // Verifica se a unidade selecionada é válida
+    if (!unidadeSelecionada || !unidadesEmails.some(u => u.unidade === unidadeSelecionada)) {
+        return;
+    }
 
     if (input) {
         const logins = input.split('\n').map(login => login.trim()).filter(login => login);
@@ -632,6 +637,7 @@ function adicionarMultiplosLogins() {
     // Atualiza a lista visual de logins após adicionar múltiplos logins
     atualizarListaLogins();
 }
+
 // Atualize o evento de clique do botão "Salvar" do modal de múltiplos logins
 document.getElementById('saveMultiLogin').onclick = function() {
     adicionarMultiplosLogins();
@@ -668,7 +674,7 @@ function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
 
     let partesNome = usuarioFormatado.split(' ');
     let primeiroNome = partesNome[0].toLowerCase();
-    let ultimaLetraUltimoNome = partesNome.length > 1 ? partesNome[partesNome.length - 1].toLowerCase().charAt(0) : '';
+    let ultimaLetraUltimoNome = partesNome.length > 1 ? partesNome[partesNome.length - 1].toLowerCase().charAt(0) : partesNome[0].toLowerCase().charAt(0);
 
     let emailDominio = obterDominioEmail(unidadeSelecionada);
 
@@ -689,6 +695,7 @@ function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
     // Adiciona a operação ao histórico de adições
     historicoAdicoes.push(listaUsuarios.length - 1);
 }
+
 
 
 
