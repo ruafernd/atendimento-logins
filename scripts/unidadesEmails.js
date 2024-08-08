@@ -273,6 +273,7 @@ const unidadesEmails = [
     { unidade: "AMOR SAUDE SERRA SEDE - ES", email: "amsserrasede.com", cnpj: "47.781.666/0001-98", servidor: "ES"},
     { unidade: "AMOR SAUDE TRES CORACOES - MG", email: "amstrescoracoes.com", cnpj: "50.580.065/0001-21", servidor: "MG"},
     { unidade: "AMOR SAUDE VARGINHA - MG", email: "asvarginha.com", cnpj: "08.145.097/0001-32", servidor: "MG"},
+    { unidade: "AMOR SAUDE ARAGUARI - MG", email: "amsaraguari.com", cnpj: "45.272.633/0001-97", servidor: "MG"},
     { unidade: "AMOR SAUDE VALE DO ACO - MG", email: "amorsaudeva.com", cnpj: "29.533.195/0001-17", servidor: "MG"},
     { unidade: "AMOR SAUDE PASSOS - MG", email: "amorsaudepassos.com", cnpj: "12.111.983/0001-12", servidor: "MG"},
     { unidade: "AMOR SAUDE CLINICA SAO JOSE MONTES CLAROS - MG", email: "amorsaudemc.com.br", cnpj: "07.342.208/0001-38", servidor: "MG"},
