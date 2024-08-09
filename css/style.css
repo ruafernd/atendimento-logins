@@ -393,7 +393,7 @@ label {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 80%;
+    width: 97%;
     color: #000000;
     font-size: 14px;
     float: right;
@@ -403,7 +403,8 @@ label {
     overflow-y: auto;
     flex-direction: column-reverse;
     
-    max-height: 100px;
+    max-height: 300px;
+    max-width: 900px;
 }
 
 
