@@ -403,7 +403,7 @@ label {
     overflow-y: auto;
     flex-direction: column-reverse;
     
-    max-height: 230px;
+    max-height: 240px;
     max-width: 900px;
 }
 
