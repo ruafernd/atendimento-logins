@@ -1,6 +1,16 @@
     const unidades = unidadesEmails.map(item => item.unidade);
     let unidadeSelecionada = "";
 
+
+
+    // Elementos do DOM
+    const unidadeInput = document.getElementById("unidadeInput");
+    const sugestoes = document.getElementById("sugestoes");
+    const listaLogins = document.getElementById("listaLogins");
+    const modal = document.getElementById("editModal");
+    const span = document.getElementsByClassName("close")[0];
+    const saveEditButton = document.getElementById("saveEdit");
+
     function obterDominioEmail(unidade) {
         const unidadeEncontrada = unidadesEmails.find(item => item.unidade === unidade);
         return unidadeEncontrada ? unidadeEncontrada.email : "";
@@ -8,17 +18,6 @@
 
 
     document.getElementById("unidadeInput").addEventListener("focus", function () {
-        const sugestoes = document.getElementById("sugestoes");
-        sugestoes.style.display = "block"; // Exibe a lista de sugestões ao focar no input
-        atualizarSugestoesUnidade(); // Atualiza as sugestões baseadas no texto atual do input
-    });
-
-    document.getElementById("unidadeInput").addEventListener("input", function () {
-        atualizarSugestoesUnidade(); // Atualiza as sugestões conforme o usuário digita
-    });
-
-    document.getElementById("unidadeInput").addEventListener("focus", function () {
-        const sugestoes = document.getElementById("sugestoes");
         sugestoes.style.display = "block"; // Exibe a lista de sugestões ao focar no input
         atualizarSugestoesUnidade(); // Atualiza as sugestões baseadas no texto atual do input
     });
@@ -42,9 +41,9 @@
         return texto; // Retorna o texto original se não for CNPJ
     }
     
+    
     function atualizarSugestoesUnidade() {
-        const unidadeInput = document.getElementById("unidadeInput");
-        const sugestoes = document.getElementById("sugestoes");
+       
         sugestoes.innerHTML = ""; // Limpa as sugestões anteriores
     
         const textoInput = removerAcentos(unidadeInput.value.toLowerCase().trim()); // Captura o texto digitado pelo usuário, removendo espaços em branco extras
@@ -100,7 +99,6 @@
     });
 
     document.body.addEventListener("click", function (event) {
-        const sugestoes = document.getElementById("sugestoes");
         if (sugestoes.style.display === "block" && event.target !== unidadeInput) {
             sugestoes.style.display = "none";
         }
@@ -110,6 +108,9 @@
 
     const listaUsuarios = [];
 
+
+            
+    // Seleciona uma unidade e atualiza o e-mail e a lista de logins
     function selecionarUnidade(unidade) {
         unidadeSelecionada = unidade;
         const emailInput = document.getElementById("email");
@@ -280,9 +281,6 @@
     }
 
     // Adicione as variáveis para o modal e seus elementos
-    const modal = document.getElementById("editModal");
-    const span = document.getElementsByClassName("close")[0];
-    const saveEditButton = document.getElementById("saveEdit");
     let editIndex = -1;
 
     // Função para abrir o modal e preencher os campos com os dados existentes
@@ -326,7 +324,6 @@
     });
 
     document.addEventListener("click", function(event) {
-        const modal = document.getElementById("editModal");
         const modalContent = document.getElementById("modalContent");
 
         // Verifica se o clique foi fora do modal e não foi dentro do modalContent
@@ -337,7 +334,6 @@
 
     // Quando o usuário clicar fora do modal, fecha o modal
     window.onclick = function(event) {
-        const modal = document.getElementById("editModal");
         if (event.target === modal) {
             // Verifica se há seleção de texto ativa
             const selection = window.getSelection().toString().trim();
@@ -349,7 +345,6 @@
 
 // Função para atualizar a lista visual de logins
 function atualizarListaLogins() {
-    const listaLogins = document.getElementById("listaLogins");
     listaLogins.innerHTML = "";
 
     if (listaUsuarios.length > 0) {
@@ -536,10 +531,6 @@ function atualizarListaLogins() {
 
 
 
-    function excluirLogin(index) {
-        listaUsuarios.splice(index, 1);
-        atualizarListaLogins();
-    }
 
     function formatarNomePrimeiraLetraMaiuscula(nome) {
         return nome.toLowerCase().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');

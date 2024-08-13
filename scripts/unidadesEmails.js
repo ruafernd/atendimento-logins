@@ -381,6 +381,7 @@ const unidadesEmails = [
     { unidade: "AMOR SAUDE PACAJUS - NE", email: "aspacajus.com", cnpj: "42.357.861/0001-71", servidor: "NE"},
     { unidade: "AMOR SAUDE CARIRI - NE", email: "ascariri.com", cnpj: "19.811.776/0001-21", servidor: "NE"},
     { unidade: "AMOR SAUDE IGUATU - NE", email: "asiguatu.com", cnpj: "39.730.417/0001-45", servidor: "NE"},
+    { unidade: "AMOR SAUDE MACAIBA - NE", email: "amsmacaiba.com", cnpj: "55.193.744/0001-61", servidor: "NE"},
     { unidade: "AMOR SAUDE CONJUNTO CEARA - NE", email: "asconjuntoceara.com", cnpj: "44.496.547/0001-03", servidor: "NE"},
     { unidade: "AMOR SAUDE MARANGUAPE - NE", email: "asmaranguape.com", cnpj: "41.684.027/0001-28", servidor: "NE"},
     { unidade: "AMOR SAUDE CAUCAIA - NE", email: "amorsaudecaucaia.com", cnpj: "15.229.764/0001-20", servidor: "NE"},
