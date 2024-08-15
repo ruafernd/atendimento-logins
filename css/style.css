@@ -105,7 +105,15 @@ body.night-mode .refresh-icon {
 
 }
 
+/* Efeito de escurecimento quando o mouse estiver sobre o item */
+.sugestao:hover {
+    background-color: #e0e0e0; /* Cor de fundo escurecida */
+}
 
+/* Efeito de escurecimento quando o mouse estiver sobre o item */
+body.night-mode .sugestao:hover {
+    background-color: #000000; /* Cor de fundo escurecida */
+}
 
 
 input[type="text"],
