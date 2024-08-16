@@ -1,125 +1,161 @@
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Criação de Logins - Atendimento Inteligente</title>
-        <link rel="stylesheet" href="css/style.css" type="text/css">
-        <link rel="icon" href="icons/logoAI_azul.png" type="image/png">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    </head>
-    <body>
-    
-        
-        
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Criação de Logins - Atendimento Inteligente</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="icon" href="icons/logoAI_azul.png" type="image/png" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
+    <div class="login-container">
+      <i class="material-icons refresh-icon" id="reloadPage">refresh</i>
 
-        <div class="login-container">
-            <i class="material-icons refresh-icon" id="reloadPage">refresh</i>
-
-            <label class="ui-switch">
-                <input type="checkbox" id="toggleSwitch" onchange="toggleNightMode(this)">
-                <div class="slider">
-                <div class="circle"></div>
-                </div>
-            </label>
-            <img src="icons/logoAtendimentointeligente.png" width="250px" class="iconcadastro light-logo">
-            <img src="icons/aiescuro.png" width="250px" class="iconcadastro dark-logo">
-
-            <div class="usuarios-label">
-                <div class="input-field no-label">
-                    <i class="material-icons">person</i>
-                    <input type="text" id="usuario" class="input-field" autocomplete="off" autocorrect="off" placeholder="Usuário">
-                </div>
-            </div>
-
-            <div class="prefixo-container">
-                <label for="prefixo">Prefixo:</label>
-                <select id="prefixo" class="input-field">
-                    <option value="Dr.">Dr.</option>
-                    <option value="Dra.">Dra.</option>
-                    <option value="Tec.">Tec.</option>
-                    <option value="Enf.">Enf.</option>
-                    <option value="Nenhum">Recepção</option>
-                    
-                    
-                </select>
-            </div>
-
-            <div class="input-field no-label">
-                <i class="material-icons" id="limparUnidadeIcon">apartment</i>
-                <input type="text" id="unidadeInput" autocomplete="off" autocorrect="off" class="input-field" placeholder="Unidade" ondblclick="limparUnidade()">
-                <div id="sugestoes"></div>
-            </div>
-            
-            <div>
-                <div class="input-field no-label">
-                    <i class="material-icons">email</i>
-                    <input type="text" id="email" placeholder="Email padrão" readonly>
-                </div>
-            </div>
-
-            <div class="action-buttons">
-                <div>
-                    <button onclick="adicionarLogin()">Adicionar Login</button>
-                    <button onclick="excluirTodosLogins()">Excluir Logins</button>
-                </div>
-                <div>
-                    <button onclick="copiarLista()">Copiar Usuários</button>
-                    <button onclick="abrirModalMultiplosLogins()">Logins em massa</button>
-                </div>
-            </div>
-
-            <div class="login-list" id="listaLogins"></div>
+      <label class="ui-switch">
+        <input
+          type="checkbox"
+          id="toggleSwitch"
+          onchange="toggleNightMode(this)"
+        />
+        <div class="slider">
+          <div class="circle"></div>
         </div>
+      </label>
+      <img
+        src="icons/logoAtendimentointeligente.png"
+        width="250px"
+        class="iconcadastro light-logo"
+      />
+      <img
+        src="icons/aiescuro.png"
+        width="250px"
+        class="iconcadastro dark-logo"
+      />
 
-        <div id="editModal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <div style="color: #888;">
-                    <h2>Editar Cadastro</h2>
-                </div>
-                <div class="input-container">
-                    <i class="material-icons">person</i>
-                    <input type="text" id="editUsuario" name="editUsuario" placeholder="Usuário">
-                </div>
-                <div class="input-container">
-                    <i class="material-icons">email</i>
-                    <input type="text" id="editEmail" name="editEmail" placeholder="Email">
-                </div>
-                <div class="input-container">
-                    <i class="material-icons">vpn_key</i>
-                    <input type="text" id="editSenha" name="editSenha" placeholder="Senha">
-                </div>
-                <button id="saveEdit">Salvar</button>
-            </div>
+      <div class="usuarios-label">
+        <div class="input-field no-label">
+          <i class="material-icons">person</i>
+          <input
+            type="text"
+            id="usuario"
+            class="input-field"
+            autocomplete="off"
+            autocorrect="off"
+            placeholder="Usuário"
+          />
         </div>
-        
- 
-      
-        
+      </div>
 
-        <!-- Botão para abrir o modal -->
-<!-- Modal de múltiplos logins -->
-<div id="multiLoginModal">
-    <div class="modal-content">
+      <div class="prefixo-container">
+        <label for="prefixo">Prefixo:</label>
+        <select id="prefixo" class="input-field">
+          <option value="Dr.">Dr.</option>
+          <option value="Dra.">Dra.</option>
+          <option value="Tec.">Tec.</option>
+          <option value="Enf.">Enf.</option>
+          <option value="Nenhum">Recepção</option>
+        </select>
+      </div>
+
+      <div class="input-field no-label">
+        <i class="material-icons" id="limparUnidadeIcon">apartment</i>
+        <input
+          type="text"
+          id="unidadeInput"
+          autocomplete="off"
+          autocorrect="off"
+          class="input-field"
+          placeholder="Unidade"
+          ondblclick="limparUnidade()"
+        />
+        <div id="sugestoes"></div>
+      </div>
+
+      <div>
+        <div class="input-field no-label">
+          <i class="material-icons">email</i>
+          <input type="text" id="email" placeholder="Email padrão" readonly />
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <div>
+          <button onclick="adicionarLogin()">Adicionar Login</button>
+          <button onclick="excluirTodosLogins()">Excluir Logins</button>
+        </div>
+        <div>
+          <button onclick="copiarLista()">Copiar Usuários</button>
+          <button onclick="abrirModalMultiplosLogins()">Logins em massa</button>
+        </div>
+      </div>
+
+      <div class="login-list" id="listaLogins"></div>
+    </div>
+
+    <div id="editModal" class="modal">
+      <div class="modal-content">
         <span class="close">&times;</span>
-       
+        <div style="color: #888">
+          <h2>Editar Cadastro</h2>
+        </div>
+        <div class="input-container">
+          <i class="material-icons">person</i>
+          <input
+            type="text"
+            id="editUsuario"
+            name="editUsuario"
+            placeholder="Usuário"
+          />
+        </div>
+        <div class="input-container">
+          <i class="material-icons">email</i>
+          <input
+            type="text"
+            id="editEmail"
+            name="editEmail"
+            placeholder="Email"
+          />
+        </div>
+        <div class="input-container">
+          <i class="material-icons">vpn_key</i>
+          <input
+            type="text"
+            id="editSenha"
+            name="editSenha"
+            placeholder="Senha"
+          />
+        </div>
+        <button id="saveEdit">Salvar</button>
+      </div>
+    </div>
+
+    <!-- Botão para abrir o modal -->
+    <!-- Modal de múltiplos logins -->
+    <div id="multiLoginModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+
         <label for="multiLoginPrefixo">Prefixo:</label>
         <select id="multiLoginPrefixo">
-            <option value="Dr.">Dr.</option>
-            <option value="Dra.">Dra.</option>
-            <option value="Tec.">Tec.</option>
-            <option value="Enf.">Enf.</option>
-            <option value="Nenhum">Recepção</option>
+          <option value="Dr.">Dr.</option>
+          <option value="Dra.">Dra.</option>
+          <option value="Tec.">Tec.</option>
+          <option value="Enf.">Enf.</option>
+          <option value="Nenhum">Recepção</option>
         </select>
-        <textarea id="multiLoginInput" placeholder="Insira um login por linha"></textarea>
+        <textarea
+          id="multiLoginInput"
+          placeholder="Insira um login por linha"
+        ></textarea>
         <button id="saveMultiLogin">Salvar</button>
+      </div>
     </div>
-</div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
-        
-        <script src="scripts/unidadesEmails.js"></script>
-        <script src="scripts/script.js"></script>
-        
-    </body>
-    </html>
+    <script src="scripts/unidadesEmails.js"></script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>

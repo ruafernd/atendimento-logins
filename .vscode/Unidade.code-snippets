@@ -2,7 +2,7 @@
     "Unidade e Email": {
         "prefix": "ue",
         "body": [
-            "{ unidade: \"$1\", email: \"$2\", cnpj: \"$3\", servidor: \"$4\"},"
+            "{\n unidade: \"$1\",\n email: \"$2\",\n cnpj: \"$3\",\n servidor: \"$4\"\n},"
         ],
         "description": "Snippet para unidade e email"
     }

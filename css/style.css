@@ -1,120 +1,109 @@
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background: linear-gradient(90deg, #1a237e, #1e88e5);
-    color: white;
-    font-family: Arial, sans-serif;
-    transition: background-color 0.5s ease, color 0.5s ease;
-    overflow-x: hidden; /* Para remover a rolagem horizontal */
-    overflow-y: hidden; /* Para remover a rolagem vertical */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(90deg, #1a237e, #1e88e5);
+  color: white;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.5s ease, color 0.5s ease;
+  overflow-x: hidden; /* Para remover a rolagem horizontal */
+  overflow-y: hidden; /* Para remover a rolagem vertical */
 }
 
 .night-mode .dark-logo {
-    filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
 }
 
-
-
 .login-container {
-    background-color: aliceblue;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 80%;
-    max-width: 350px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative; /* Certifique-se de que o container pai tem posição relativa */
-    transition: background-color 0.5s ease, color 0.5s ease;
-
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; /* Certifique-se de que o container pai tem posição relativa */
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 /* Adicione estas classes para o ícone de recarregar */
 .refresh-icon {
-    position: absolute;
-    top: 10px;
-    padding-left: 7px;
-    left: 10px;
-    cursor: pointer;
-    color: rgb(100, 82, 82);
-    font-size: 19px !important;
+  position: absolute;
+  top: 10px;
+  padding-left: 7px;
+  left: 10px;
+  cursor: pointer;
+  color: rgb(100, 82, 82);
+  font-size: 19px !important;
 }
 
 /* Estilo para o modo noturno do ícone de recarregar */
 body.night-mode .refresh-icon {
-    color: white;
+  color: white;
 }
 
-
-
 .prefixo-container {
-    width: 80%;
+  width: 80%;
 }
 
 /* Icone da barra*/
-.iconcadastro{
-    padding: 10px;
-    padding-left: 17px;
-    width: 230px;
+.iconcadastro {
+  padding: 10px;
+  padding-left: 17px;
+  width: 230px;
 }
 
 .login-item {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
-
-
 
 /* Estilo para o campo de email padrão com largura personalizada e ícone */
 .input-field.no-label {
-    position: relative;
+  position: relative;
 }
 
 .input-field.no-label i.material-icons {
-    position: absolute;
-    left: 0px;
-    top: 37%;
-    font-size: 22px;
-    transform: translateY(-50%);
-    color: rgb(119, 119, 119);
-    
+  position: absolute;
+  left: 0px;
+  top: 37%;
+  font-size: 22px;
+  transform: translateY(-50%);
+  color: rgb(119, 119, 119);
 }
-
 
 /* Estilo para lista de Unidades */
 
 #sugestoes {
-    max-height: 150px;
-    overflow-y: auto;
-    display: none;
-    position: absolute;
-    background-color: white;
-    color: black;
-    width: 100%;
-    border-radius: 5px;
-    border: 0px solid #ccc;
-    box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.6);
-    padding-left: 2px;
-    padding-top: 0px;
-    margin-top: -17px;
-    margin-left: -1px;
-    z-index: 1;
-
+  max-height: 150px;
+  overflow-y: auto;
+  display: none;
+  position: absolute;
+  background-color: white;
+  color: black;
+  width: 100%;
+  border-radius: 5px;
+  border: 0px solid #ccc;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.6);
+  padding-left: 2px;
+  padding-top: 0px;
+  margin-top: -17px;
+  margin-left: -1px;
+  z-index: 1;
 }
 
 /* Efeito de escurecimento quando o mouse estiver sobre o item */
 .sugestao:hover {
-    background-color: #e0e0e0; /* Cor de fundo escurecida */
+  background-color: #e0e0e0; /* Cor de fundo escurecida */
 }
 
 /* Efeito de escurecimento quando o mouse estiver sobre o item */
 body.night-mode .sugestao:hover {
-    background-color: #000000; /* Cor de fundo escurecida */
+  background-color: #000000; /* Cor de fundo escurecida */
 }
-
 
 input[type="text"],
 select,
@@ -122,25 +111,24 @@ select,
 #email,
 #usuario,
 #prefixo {
-    width: 280px !important;
-    padding: 7px;
-    padding-left: 30px;
-    margin-bottom: 10px;
-    border: none;
-    border-bottom: 1.9px solid #ccc;
-    border-radius: 0px;
-    box-sizing: border-box;
-    background-color: transparent;
-    outline: none;
-    transition: background-color 0.5s ease, color 0.5s ease, border-bottom-color 0.5s ease;
+  width: 280px !important;
+  padding: 7px;
+  padding-left: 30px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1.9px solid #ccc;
+  border-radius: 0px;
+  box-sizing: border-box;
+  background-color: transparent;
+  outline: none;
+  transition: background-color 0.5s ease, color 0.5s ease,
+    border-bottom-color 0.5s ease;
 }
-
 
 /* Distância entre os componentes */
 .input-field.no-label {
-    margin-top: 10px; 
+  margin-top: 10px;
 }
-
 
 /*Estilo para animação ao selecionar campo*/
 input[type="text"]:focus,
@@ -148,164 +136,148 @@ select:focus,
 #unidadeInput:focus,
 #email:focus,
 #usuario:focus,
-#material-icons:focus
-{
-    border-bottom-color: #1d83e0;
-    
+#material-icons:focus {
+  border-bottom-color: #1d83e0;
 }
 
 /*Estilo para lista de unidades*/
 .sugestao {
-    padding: 5px;
-    cursor: pointer;
-    font-size: 14px;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
 .login-item .material-icons {
-    font-size: 16px; /* Altere o tamanho conforme necessário */
-    color: black !important;
+  font-size: 16px; /* Altere o tamanho conforme necessário */
+  color: black !important;
 }
 .action-buttons {
-    display: flex;
-    justify-content: flex-start; /* Alinha os ícones à esquerda */
-    max-width: 490px;
-    margin-left: -10px; /* Ajusta a margem para a esquerda */
+  display: flex;
+  justify-content: flex-start; /* Alinha os ícones à esquerda */
+  max-width: 490px;
+  margin-left: -10px; /* Ajusta a margem para a esquerda */
 }
 
 .user-info-container {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 /* Estilo dos ícones */
 .delete-icon,
 .edit-icon,
 .reload-icon {
-    margin-left: 0px; /* Reduz a margem entre os ícones */
-    margin-right: 5px;
-    font-size: 20px; /* Ajusta o tamanho dos ícones */
-    user-select: none; /* Impede a seleção de texto ao clicar nos ícones */
-    fill: none; /* Remove o preenchimento visual */
-    stroke: black; /* Cor do contorno do ícone */
-    stroke-width: 2; /* Espessura do contorno */
-    margin-top: 4px; /* Adiciona margem superior para espaçar os ícones */
+  margin-left: 0px; /* Reduz a margem entre os ícones */
+  margin-right: 5px;
+  font-size: 20px; /* Ajusta o tamanho dos ícones */
+  user-select: none; /* Impede a seleção de texto ao clicar nos ícones */
+  fill: none; /* Remove o preenchimento visual */
+  stroke: black; /* Cor do contorno do ícone */
+  stroke-width: 2; /* Espessura do contorno */
+  margin-top: 4px; /* Adiciona margem superior para espaçar os ícones */
 }
 
 .edit-icon {
-    cursor: pointer; /* Faz o ícone parecer um botão */
-    color: black;
+  cursor: pointer; /* Faz o ícone parecer um botão */
+  color: black;
 }
 
 .reload-icon {
-    cursor: pointer;
-    color: black;
+  cursor: pointer;
+  color: black;
 }
 
 .delete-icon {
-    cursor: pointer; /* Faz o ícone parecer um botão */
-    color: black;
+  cursor: pointer; /* Faz o ícone parecer um botão */
+  color: black;
 }
-
-
 
 /* The Modal (background) */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4); /* fundo escuro semi-transparente */
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* fundo escuro semi-transparente */
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: aliceblue;
-    margin: 10% auto; /* Margem que define o posicionamento vertical */
-    padding: 20px;
-    border-radius: 10px; /* Arredonda as bordas */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 80%;
-    max-width: 330px;
-    text-align: center;
-    position: relative; /* Necessário para usar top, bottom, left, right */
-    top: 90px; /* Ajusta a distância do topo */
+  background-color: aliceblue;
+  margin: 10% auto; /* Margem que define o posicionamento vertical */
+  padding: 20px;
+  border-radius: 10px; /* Arredonda as bordas */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 330px;
+  text-align: center;
+  position: relative; /* Necessário para usar top, bottom, left, right */
+  top: 90px; /* Ajusta a distância do topo */
 }
 
-
-
-
 .input-container {
-    margin-bottom: 10px;
-    position: relative;
+  margin-bottom: 10px;
+  position: relative;
 }
 
 .input-container i.material-icons {
-    position: absolute;
-    top: 37%;
-    left: 25px;
-    transform: translateY(-50%);
-    font-size: 20px; /* ajusta o tamanho do ícone */
-    color: #888;
-    
+  position: absolute;
+  top: 37%;
+  left: 25px;
+  transform: translateY(-50%);
+  font-size: 20px; /* ajusta o tamanho do ícone */
+  color: #888;
 }
 
-
-
-
 .input-container input {
-    padding-left: 30px;
-    width: calc(100% - 40px);
-    font-size: 16px; /* ajusta o tamanho do texto */
+  padding-left: 30px;
+  width: calc(100% - 40px);
+  font-size: 16px; /* ajusta o tamanho do texto */
 }
 
 /* The Close Button */
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-
 .copy-icon {
-    margin-left: 5px;
-    cursor: pointer;
+  margin-left: 5px;
+  cursor: pointer;
 }
 
 .material-icons.check-icon {
-    color: green; /* ou qualquer cor que você preferir */
+  color: green; /* ou qualquer cor que você preferir */
 }
-
-
 
 /* Estilo para botões da parte debaixo */
 button {
-    background-color: #1d83e0;
-    color: aliceblue;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    margin: 5px;
-    cursor: pointer;
-    display: block;
-    width: 150px;
-    transition: background-color 0.5s ease, color 0.5s ease, border-bottom-color 0.5s ease;
-
+  background-color: #1d83e0;
+  color: aliceblue;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  margin: 5px;
+  cursor: pointer;
+  display: block;
+  width: 150px;
+  transition: background-color 0.5s ease, color 0.5s ease,
+    border-bottom-color 0.5s ease;
 }
-
-
 
 /* Código para adicionar animação ao selecionar */
 input[type="text"]:focus::before,
@@ -313,126 +285,109 @@ select:focus::before,
 #unidadeInput:focus::before,
 #email:focus::before,
 #usuario:focus::before,
-#material-icons::before
-{
-    content: "";
-    position: absolute;
-    left: 50%; 
-    bottom: 0;
-    width: 0; 
-    height: 2px; 
-    background-color: #1d83e0; 
-    transition: width 0.5s ease, left 0.5s ease; 
-    
+#material-icons::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #1d83e0;
+  transition: width 0.5s ease, left 0.5s ease;
 }
 
 /* Estilo para rótulo "Prefixo" */
 label[for="prefixo"] {
-    font-size: 14px; 
+  font-size: 14px;
 }
-
-
 
 /* Estilo para campo Prefixo (select) */
 select#prefixo.input-field {
-    width:100%; 
-    
-    padding:  1px;
-    margin-bottom: 10px; 
-    border: none;
-    border-bottom: 1.9px solid #ccc;
-    border-radius: 0px;
-    box-sizing: border-box;
-    background-color: transparent;
-    outline: none;
-    transition: border-bottom-color 1s ease;
+  width: 100%;
+
+  padding: 1px;
+  margin-bottom: 10px;
+  border: none;
+  border-bottom: 1.9px solid #ccc;
+  border-radius: 0px;
+  box-sizing: border-box;
+  background-color: transparent;
+  outline: none;
+  transition: border-bottom-color 1s ease;
 }
 
-
-
-
 .login-item-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
 }
 
 .action-buttons {
-    display: flex;
-    justify-content: space-between;
-    max-width: 490px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 490px;
 }
-
 
 /* Configuração para unidades */
 div.login-container input#unidadeInput.input-field {
-    width: 279px;
-    font-size: 14px;
-    padding-top: 13px;
-    padding-left: 30px;
-    margin-bottom: 19px;
+  width: 279px;
+  font-size: 14px;
+  padding-top: 13px;
+  padding-left: 30px;
+  margin-bottom: 19px;
 }
 
 /* Configuração para usuários */
 div.login-container input#usuario.input-field {
-    width: 272px;
-    padding-top: 14px;
-    font-size: 14px;
-    margin-bottom: 19px;
+  width: 272px;
+  padding-top: 14px;
+  font-size: 14px;
+  margin-bottom: 19px;
 }
-
-
 
 /* Cor Prefixo e Email padrão */
 label {
-    color: #6c757d;
+  color: #6c757d;
 }
-
-
 
 /* Configurações para lista de logins */
 .login-list {
-    background-color: aliceblue;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    width: 97%;
-    color: #000000;
-    font-size: 14px;
-    float: right;
-    margin-top: 10px;
-    transition: background-color 0.5s ease, color 0.5s ease; /* Adicione a transição */
+  background-color: aliceblue;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 97%;
+  color: #000000;
+  font-size: 14px;
+  float: right;
+  margin-top: 10px;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Adicione a transição */
 
-    overflow-y: auto;
-    flex-direction: column-reverse;
-    
-    max-height: 250px;
-    max-width: 900px;
+  overflow-y: auto;
+  flex-direction: column-reverse;
+
+  max-height: 250px;
+  max-width: 900px;
 }
-
-
-
 
 /* Estilo para o modo noturno */
 body.night-mode {
-    background: linear-gradient(90deg, #000000, #2c2c2c);
-    color: white;
+  background: linear-gradient(90deg, #000000, #2c2c2c);
+  color: white;
 }
 
 body.night-mode .login-container {
-    background-color: #333;
-    color: white;
+  background-color: #333;
+  color: white;
 }
 
-
 body.night-mode .servidor-info {
-    color: white !important; /* Garante que a cor branca seja aplicada no modo noturno */
-    transition: background-color 0.5s ease, color 0.5s ease;
+  color: white !important; /* Garante que a cor branca seja aplicada no modo noturno */
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 body.night-mode input,
@@ -440,99 +395,95 @@ body.night-mode select,
 body.night-mode #unidadeInput,
 body.night-mode #email,
 body.night-mode #usuario {
-    background-color: #333;
-    color: white;
-    border-bottom: 1.9px solid #888;
+  background-color: #333;
+  color: white;
+  border-bottom: 1.9px solid #888;
 }
 
 body.night-mode .material-icons {
-    color: white;
+  color: white;
 }
 
 body.night-mode .modal-content {
-    background-color: #333;
-    color: white;
-
+  background-color: #333;
+  color: white;
 }
-
 
 .night-mode #multiLoginModal textarea {
-    background-color: #444;
-    color: white;
-    border: 1px solid #555;
+  background-color: #444;
+  color: white;
+  border: 1px solid #555;
 }
 
-
 body.night-mode #sugestoes {
-    background-color: #444;
-    color: white;
+  background-color: #444;
+  color: white;
 }
 
 body.night-mode button {
-    background-color: #000000;
-    color: white;
+  background-color: #000000;
+  color: white;
 }
 
 body.night-mode .light-logo {
-    opacity: 0;
-    position: absolute;
-    z-index: -1;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 body.night-mode .dark-logo {
-    opacity: 1;
-    position: static;
-    z-index: 1;
+  opacity: 1;
+  position: static;
+  z-index: 1;
 }
 
 .light-logo {
-    opacity: 1;
-    position: static;
-    z-index: 1;
+  opacity: 1;
+  position: static;
+  z-index: 1;
 }
 
 .dark-logo {
-    opacity: 0;
-    position: absolute;
-    z-index: -1;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
 }
 
 /* Estilo para o ícone de alternância */
 .toggle-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding: 10px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
 }
 
 #toggleMode {
-    cursor: pointer;
-    font-size: 24px;
-    color: inherit;
-    background: none;
-    border: none;
-    outline: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
 }
 
 /* Estilo para o modo noturno */
 body.night-mode .login-list {
-    background-color: #333;
-    color: white;
+  background-color: #333;
+  color: white;
 }
 
-
 body.night-mode .login-list .material-icons {
-    color: white !important;
+  color: white !important;
 }
 
 /* Estilo para o modo noturno */
 body.night-mode .login-list {
-    background-color: #333; /* Cor de fundo mais escura */
-    color: white; /* Cor da fonte branca */
+  background-color: #333; /* Cor de fundo mais escura */
+  color: white; /* Cor da fonte branca */
 }
 
 body.night-mode .login-list .material-icons {
-    color: white !important; /* Cor dos ícones na lista de logins */
+  color: white !important; /* Cor dos ícones na lista de logins */
 }
 
 /* Estilo para o modo noturno */
@@ -541,12 +492,12 @@ body.night-mode select,
 body.night-mode #unidadeInput,
 body.night-mode #email,
 body.night-mode #usuario {
-    transition: background-color 0.5s ease, color 0.5s ease, border-bottom-color 0.5s ease;
-    background-color: #333; /* Cor de fundo escura para inputs */
-    color: rgb(255, 255, 255) !important; /* Cor da fonte branca para inputs */
-    border-bottom-color: #ffffff; /* Cor do fundo do input */
+  transition: background-color 0.5s ease, color 0.5s ease,
+    border-bottom-color 0.5s ease;
+  background-color: #333; /* Cor de fundo escura para inputs */
+  color: rgb(255, 255, 255) !important; /* Cor da fonte branca para inputs */
+  border-bottom-color: #ffffff; /* Cor do fundo do input */
 }
-
 
 /* Estilo para input focado no modo noturno */
 body.night-mode input[type="text"]:focus,
@@ -554,131 +505,132 @@ body.night-mode select:focus,
 body.night-mode #unidadeInput:focus,
 body.night-mode #email:focus,
 body.night-mode #usuario:focus {
-    border-bottom-color: #ffffff; /* Cor branca da borda inferior focada */
-    box-shadow: 0 0px 0 0 #ffffff; /* Sombra branca simulando a onda */
-    transition: border-bottom-color 0.5s ease, box-shadow 0.5s ease; /* Transições suaves */
+  border-bottom-color: #ffffff; /* Cor branca da borda inferior focada */
+  box-shadow: 0 0px 0 0 #ffffff; /* Sombra branca simulando a onda */
+  transition: border-bottom-color 0.5s ease, box-shadow 0.5s ease; /* Transições suaves */
 }
-
 
 body.night-mode input[type="text"]::placeholder,
 body.night-mode select::placeholder,
 body.night-mode #unidadeInput::placeholder,
 body.night-mode #email::placeholder,
 body.night-mode #usuario::placeholder {
-    color: #ffffff; /* Cor do placeholder */
+  color: #ffffff; /* Cor do placeholder */
 }
 
 body.night-mode .material-icons {
-    color: rgb(255, 255, 255) !important; /* Cor dos ícones dentro dos inputs */
+  color: rgb(255, 255, 255) !important; /* Cor dos ícones dentro dos inputs */
 }
 
 /* Estilo para o modo noturno - cor do texto do select */
 body.night-mode #prefixo {
-    color: white; /* Cor do texto do select no modo noturno */
+  color: white; /* Cor do texto do select no modo noturno */
 }
 
 /* Estilo para o modo noturno - cor do texto das opções do select */
 body.night-mode #prefixo option {
-    color: white; /* Cor do texto das opções do select no modo noturno */
+  color: white; /* Cor do texto das opções do select no modo noturno */
 }
 
 /* Estilo para o modo noturno - cor de fundo das opções do select */
 body.night-mode #prefixo option {
-    background-color: #333; /* Cor de fundo das opções do select no modo noturno */
+  background-color: #333; /* Cor de fundo das opções do select no modo noturno */
 }
 
 /* Estilo para o modo noturno - cor do texto do label "Prefixo:" */
 body.night-mode label[for="prefixo"] {
-    color: white; /* Cor do texto do label "Prefixo:" no modo noturno */
+  color: white; /* Cor do texto do label "Prefixo:" no modo noturno */
 }
 
 .ui-switch {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    left: 310px;
-    padding-right: 20px;
-    --switch-bg: rgb(135, 150, 165);
-    --switch-width: 43px !important;
-    --switch-height: 20px;
-    --circle-diameter: 27px;
-    --circle-bg: rgb(0, 56, 146);
-    --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
-  }
-  
-  .ui-switch input {
-    display: none;
-  }
-  
-  .slider {
-    width: 39px; /* Ajusta a largura do slider */
-    height: 20px; /* Ajusta a altura do slider */
-    background: var(--switch-bg); /* Mantém o background conforme necessário */
-    border-radius: 999px; /* Garante que o slider seja arredondado */
-    position: relative;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  left: 310px;
+  padding-right: 20px;
+  --switch-bg: rgb(135, 150, 165);
+  --switch-width: 43px !important;
+  --switch-height: 20px;
+  --circle-diameter: 27px;
+  --circle-bg: rgb(0, 56, 146);
+  --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
 }
-  
-  .slider .circle {
-    top: calc(var(--circle-inset) * -1);
-    left: 0;
-    width: var(--circle-diameter);
-    height: var(--circle-diameter);
-    position: absolute;
-    background: var(--circle-bg);
-    border-radius: inherit;
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTQuMiAyLjVsLS43IDEuOC0xLjguNyAxLjguNy43IDEuOC42LTEuOEw2LjcgNWwtMS45LS43LS42LTEuOHptMTUgOC4zYTYuNyA2LjcgMCAxMS02LjYtNi42IDUuOCA1LjggMCAwMDYuNiA2LjZ6IiAvPgo8L3N2Zz4=");    background-repeat: no-repeat;
-    background-position: center center;
-    transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1), transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
-  }
-  
-  .slider .circle::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.75);
-    border-radius: inherit;
-    transition: all 500ms;
-    opacity: 0;
-  }
-  
-  .ui-switch input:checked + .slider .circle {
-    left: calc(100% - var(--circle-diameter));
-    background-color: #000000;
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTkuMzA1IDEuNjY3VjMuNzVoMS4zODlWMS42NjdoLTEuMzl6bS00LjcwNyAxLjk1bC0uOTgyLjk4Mkw1LjA5IDYuMDcybC45ODItLjk4Mi0xLjQ3My0xLjQ3M3ptMTAuODAyIDBMMTMuOTI3IDUuMDlsLjk4Mi45ODIgMS40NzMtMS40NzMtLjk4Mi0uOTgyek0xMCA1LjEzOWE0Ljg3MiA0Ljg3MiAwIDAwLTQuODYyIDQuODZBNC44NzIgNC44NzIgMCAwMDEwIDE0Ljg2MiA0Ljg3MiA0Ljg3MiAwIDAwMTQuODYgMTAgNC44NzIgNC44NzIgMCAwMDEwIDUuMTM5em0wIDEuMzg5QTMuNDYyIDMuNDYyIDAgMDExMy40NzEgMTBhMy40NjIgMy40NjIgMCAwMS0zLjQ3MyAzLjQ3MkEzLjQ2MiAzLjQ2MiAwIDAxNi41MjcgMTAgMy40NjIgMy40NjIgMCAwMTEwIDYuNTI4ek0xLjY2NSA5LjMwNXYxLjM5aDIuMDgzdi0xLjM5SDEuNjY2em0xNC41ODMgMHYxLjM5aDIuMDg0di0xLjM5aC0yLjA4NHpNNS4wOSAxMy45MjhMMy42MTYgMTUuNGwuOTgyLjk4MiAxLjQ3My0xLjQ3My0uOTgyLS45ODJ6bTkuODIgMGwtLjk4Mi45ODIgMS40NzMgMS40NzMuOTgyLS45ODItMS40NzMtMS40NzN6TTkuMzA1IDE2LjI1djIuMDgzaDEuMzg5VjE2LjI1aC0xLjM5eiIgLz4KPC9zdmc+");  }
-  
-  .ui-switch input:active + .slider .circle::before {
-    transition: 0s;
-    opacity: 1;
-    width: 0;
-    height: 0;
-  }
-  
+
+.ui-switch input {
+  display: none;
+}
+
+.slider {
+  width: 39px; /* Ajusta a largura do slider */
+  height: 20px; /* Ajusta a altura do slider */
+  background: var(--switch-bg); /* Mantém o background conforme necessário */
+  border-radius: 999px; /* Garante que o slider seja arredondado */
+  position: relative;
+  cursor: pointer;
+}
+
+.slider .circle {
+  top: calc(var(--circle-inset) * -1);
+  left: 0;
+  width: var(--circle-diameter);
+  height: var(--circle-diameter);
+  position: absolute;
+  background: var(--circle-bg);
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTQuMiAyLjVsLS43IDEuOC0xLjguNyAxLjguNy43IDEuOC42LTEuOEw2LjcgNWwtMS45LS43LS42LTEuOHptMTUgOC4zYTYuNyA2LjcgMCAxMS02LjYtNi42IDUuOCA1LjggMCAwMDYuNiA2LjZ6IiAvPgo8L3N2Zz4=");
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.slider .circle::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: inherit;
+  transition: all 500ms;
+  opacity: 0;
+}
+
+.ui-switch input:checked + .slider .circle {
+  left: calc(100% - var(--circle-diameter));
+  background-color: #000000;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTkuMzA1IDEuNjY3VjMuNzVoMS4zODlWMS42NjdoLTEuMzl6bS00LjcwNyAxLjk1bC0uOTgyLjk4Mkw1LjA5IDYuMDcybC45ODItLjk4Mi0xLjQ3My0xLjQ3M3ptMTAuODAyIDBMMTMuOTI3IDUuMDlsLjk4Mi45ODIgMS40NzMtMS40NzMtLjk4Mi0uOTgyek0xMCA1LjEzOWE0Ljg3MiA0Ljg3MiAwIDAwLTQuODYyIDQuODZBNC44NzIgNC44NzIgMCAwMDEwIDE0Ljg2MiA0Ljg3MiA0Ljg3MiAwIDAwMTQuODYgMTAgNC44NzIgNC44NzIgMCAwMDEwIDUuMTM5em0wIDEuMzg5QTMuNDYyIDMuNDYyIDAgMDExMy40NzEgMTBhMy40NjIgMy40NjIgMCAwMS0zLjQ3MyAzLjQ3MkEzLjQ2MiAzLjQ2MiAwIDAxNi41MjcgMTAgMy40NjIgMy40NjIgMCAwMTEwIDYuNTI4ek0xLjY2NSA5LjMwNXYxLjM5aDIuMDgzdi0xLjM5SDEuNjY2em0xNC41ODMgMHYxLjM5aDIuMDg0di0xLjM5aC0yLjA4NHpNNS4wOSAxMy45MjhMMy42MTYgMTUuNGwuOTgyLjk4MiAxLjQ3My0xLjQ3My0uOTgyLS45ODJ6bTkuODIgMGwtLjk4Mi45ODIgMS40NzMgMS40NzMuOTgyLS45ODItMS40NzMtMS40NzN6TTkuMzA1IDE2LjI1djIuMDgzaDEuMzg5VjE2LjI1aC0xLjM5eiIgLz4KPC9zdmc+");
+}
+
+.ui-switch input:active + .slider .circle::before {
+  transition: 0s;
+  opacity: 1;
+  width: 0;
+  height: 0;
+}
 
 body input[type="text"],
 body select,
 body #unidadeInput,
 body #email,
 body #usuario {
-    background-color: aliceblue; /* Cor de fundo padrão */
-    color: black; /* Cor do texto padrão */
-    border-bottom: 1.9px solid #ccc; /* Cor da borda inferior padrão */
+  background-color: aliceblue; /* Cor de fundo padrão */
+  color: black; /* Cor do texto padrão */
+  border-bottom: 1.9px solid #ccc; /* Cor da borda inferior padrão */
 }
 
 body.night-mode {
-    background: linear-gradient(90deg, #000000, #2c2c2c);
-    color: white;
-    
+  background: linear-gradient(90deg, #000000, #2c2c2c);
+  color: white;
 }
 
 body.night-mode .login-container {
-    background-color: #333;
-    color: white;
+  background-color: #333;
+  color: white;
 }
 
 body.night-mode input,
@@ -686,90 +638,85 @@ body.night-mode select,
 body.night-mode #unidadeInput,
 body.night-mode #email,
 body.night-mode #usuario {
-    background-color: #333;
-    color: white;
-    border-bottom: 1.9px solid #888;
+  background-color: #333;
+  color: white;
+  border-bottom: 1.9px solid #888;
 }
-
 
 /* Estilo para a barra de rolagem (scrollbar) padrão */
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+  width: 10px;
+  height: 10px;
 }
 
 /* Estilo para a trilha da barra de rolagem */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
+  background: #f1f1f1;
+  border-radius: 10px;
 }
 
 /* Estilo para o polegar da barra de rolagem */
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
+  background: #888;
+  border-radius: 10px;
 }
 
 /* Estilo para o polegar da barra de rolagem ao passar o mouse */
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
 
 /* Estilo para a barra de rolagem no modo noturno */
 body.night-mode ::-webkit-scrollbar-track {
-    background: #444;
+  background: #444;
 }
 
 body.night-mode ::-webkit-scrollbar-thumb {
-    background: #888;
+  background: #888;
 }
 
 body.night-mode ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }
 
-
- /* Estilo básico para o modal de múltiplos logins */
- #multiLoginModal {
-    display: none; /* Escondido por padrão */
-    position: fixed; /* Fixo na tela */
-    z-index: 1000; /* Em cima de outros elementos */
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto; /* Permite rolagem se necessário */
-    background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+/* Estilo básico para o modal de múltiplos logins */
+#multiLoginModal {
+  display: none; /* Escondido por padrão */
+  position: fixed; /* Fixo na tela */
+  z-index: 1000; /* Em cima de outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Permite rolagem se necessário */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
 }
-
-
 
 /* Botão de fechar do modal de múltiplos logins */
 #multiLoginModal .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
-
-
 
 /* Estilo do textarea para múltiplos logins */
 #multiLoginModal textarea {
-    width: calc(100% - 22px); /* Ajuste a largura para compensar padding e bordas */
-    height: 200px;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #ffffff; /* Fundo claro por padrão */
-    color: black; /* Texto preto por padrão */
-    border: 1px solid #ccc;
-    resize: none; /* Impede redimensionamento */
-    box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
+  width: calc(
+    100% - 22px
+  ); /* Ajuste a largura para compensar padding e bordas */
+  height: 200px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffffff; /* Fundo claro por padrão */
+  color: black; /* Texto preto por padrão */
+  border: 1px solid #ccc;
+  resize: none; /* Impede redimensionamento */
+  box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
 }
 
-
 .night-mode #multiLoginModal select {
-    background-color: #444;
-    color: white;
-    border: 1px solid #555;
+  background-color: #444;
+  color: white;
+  border: 1px solid #555;
 }
