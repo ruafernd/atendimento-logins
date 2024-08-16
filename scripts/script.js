@@ -1,7 +1,6 @@
-const unidades = unidadesEmails.map((item) => item.unidade);
-let unidadeSelecionada = "";
-
+// =============================
 // Elementos do DOM
+// =============================
 const unidadeInput = document.getElementById("unidadeInput");
 const sugestoes = document.getElementById("sugestoes");
 const listaLogins = document.getElementById("listaLogins");
@@ -9,25 +8,24 @@ const modal = document.getElementById("editModal");
 const span = document.getElementsByClassName("close")[0];
 const saveEditButton = document.getElementById("saveEdit");
 
+// =============================
+// Variáveis Globais
+// =============================
+const unidades = unidadesEmails.map((item) => item.unidade);
+let unidadeSelecionada = "";
+let editIndex = -1;
+let historicoAdicoes = []; // Array para armazenar o histórico de adições de login
+const listaUsuarios = [];
+
+// =============================
+// Funções de Utilidade
+// =============================
 function obterDominioEmail(unidade) {
   const unidadeEncontrada = unidadesEmails.find(
     (item) => item.unidade === unidade
   );
   return unidadeEncontrada ? unidadeEncontrada.email : "";
 }
-
-document.getElementById("unidadeInput").addEventListener("focus", function () {
-  sugestoes.style.display = "block"; // Exibe a lista de sugestões ao focar no input
-  atualizarSugestoesUnidade(); // Atualiza as sugestões baseadas no texto atual do input
-});
-
-document
-  .getElementById("unidadeInput")
-  .addEventListener("input", function (event) {
-    const unidadeInput = event.target;
-    unidadeInput.value = formatarCNPJSeForCNPJ(unidadeInput.value);
-    atualizarSugestoesUnidade(); // Atualiza as sugestões conforme o usuário digita
-  });
 
 function formatarCNPJSeForCNPJ(texto) {
   // Remove tudo que não for dígito
@@ -42,8 +40,86 @@ function formatarCNPJSeForCNPJ(texto) {
     );
   }
 
+  document
+    .getElementById("unidadeInput")
+    .addEventListener("focus", function () {
+      sugestoes.style.display = "block"; // Exibe a lista de sugestões ao focar no input
+      atualizarSugestoesUnidade(); // Atualiza as sugestões baseadas no texto atual do input
+    });
+
   return texto; // Retorna o texto original se não for CNPJ
 }
+
+function formatarNomePrimeiraLetraMaiuscula(nome) {
+  return nome
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+function removerAcentos(texto) {
+  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
+function copyToClipboard(text, iconElement) {
+  const el = document.createElement("textarea");
+  el.value = text;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand("copy");
+  document.body.removeChild(el);
+
+  // Mudar ícone para "check"
+  iconElement.textContent = "check";
+  iconElement.classList.add("check-icon");
+
+  // Voltar ao ícone original após 2 segundos
+  setTimeout(() => {
+    iconElement.textContent = "content_copy";
+    iconElement.classList.remove("check-icon");
+  }, 2000);
+}
+
+// =============================
+// Manipulação de Unidades
+// =============================
+
+// Seleciona uma unidade e atualiza o e-mail e a lista de logins
+function selecionarUnidade(unidade) {
+  unidadeSelecionada = unidade;
+  const emailInput = document.getElementById("email");
+  const dominio = obterDominioEmail(unidadeSelecionada);
+  emailInput.value = dominio;
+  limparListaUsuarios();
+  atualizarListaLogins();
+}
+
+function limparListaUsuarios() {
+  listaUsuarios.length = 0;
+  atualizarListaLogins();
+}
+
+function limparUnidade() {
+  if (unidadeSelecionada === "") {
+    return;
+  }
+
+  listaUsuarios.length = 0;
+  atualizarListaLogins();
+  unidadeSelecionada = "";
+  document.getElementById("unidadeInput").value = "";
+  document.getElementById("email").value = "";
+}
+
+// =============================
+// Manipulação de Sugestões
+// =============================
+
+document.getElementById("unidadeInput").addEventListener("focus", function () {
+  sugestoes.style.display = "block";
+  atualizarSugestoesUnidade();
+});
 
 function atualizarSugestoesUnidade() {
   sugestoes.innerHTML = ""; // Limpa as sugestões anteriores
@@ -84,52 +160,9 @@ function atualizarSugestoesUnidade() {
   sugestoes.style.display = sugestoes.childNodes.length > 0 ? "block" : "none"; // Exibe ou oculta as sugestões conforme necessário
 }
 
-document.getElementById("reloadPage").addEventListener("click", function () {
-  location.reload();
-});
-
-document
-  .getElementById("usuario")
-  .addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      const usuario = document.getElementById("usuario").value.trim();
-      const prefixo = document.getElementById("prefixo").value;
-      const unidadeInput = document.getElementById("unidadeInput").value.trim();
-
-      if (usuario && (prefixo || prefixo === "Nenhum") && unidadeSelecionada) {
-        adicionarLogin();
-      } else {
-        alert("Preencha todos os campos antes de adicionar um login.");
-      }
-    }
-  });
-
-document.body.addEventListener("click", function (event) {
-  if (sugestoes.style.display === "block" && event.target !== unidadeInput) {
-    sugestoes.style.display = "none";
-  }
-});
-
-const listaUsuarios = [];
-
-// Seleciona uma unidade e atualiza o e-mail e a lista de logins
-function selecionarUnidade(unidade) {
-  unidadeSelecionada = unidade;
-  const emailInput = document.getElementById("email");
-  const dominio = obterDominioEmail(unidadeSelecionada);
-  emailInput.value = dominio;
-  limparListaUsuarios();
-  atualizarListaLogins();
-}
-
-function limparListaUsuarios() {
-  listaUsuarios.length = 0;
-  atualizarListaLogins();
-}
-
-// Array para armazenar o histórico de adições de login
-let historicoAdicoes = [];
+// =============================
+// Manipulação de Logins
+// =============================
 
 function adicionarLogin() {
   const usuarioInput = document.getElementById("usuario");
@@ -216,25 +249,10 @@ function adicionarLogin() {
   document.getElementById("sugestoes").innerHTML = "";
 }
 
-document.getElementById("usuario").addEventListener("input", function () {
-  const usuarioInput = document.getElementById("usuario");
-  const prefixoSelect = document.getElementById("prefixo");
-  let valor = usuarioInput.value.trim();
-
-  if (/^dr\.?\s+/i.test(valor)) {
-    prefixoSelect.value = "Dr.";
-    usuarioInput.value = valor.replace(/^dr\.?\s+/i, "");
-  } else if (/^dra\.?\s+/i.test(valor)) {
-    prefixoSelect.value = "Dra.";
-    usuarioInput.value = valor.replace(/^dra\.?\s+/i, "");
-  } else if (/^tec\.?\s+/i.test(valor)) {
-    prefixoSelect.value = "Tec.";
-    usuarioInput.value = valor.replace(/^tec\.?\s+/i, "");
-  } else if (/^enf\.?\s+/i.test(valor)) {
-    prefixoSelect.value = "Enf.";
-    usuarioInput.value = valor.replace(/^enf\.?\s+/i, "");
-  }
-});
+function excluirLogin(index) {
+  listaUsuarios.splice(index, 1);
+  atualizarListaLogins();
+}
 
 // Função para desfazer a adição do último login
 function desfazerAdicaoLogin() {
@@ -248,123 +266,6 @@ function desfazerAdicaoLogin() {
     alert("Não há adições para desfazer.");
   }
 }
-
-// Captura do evento de teclado global para Ctrl + Z
-document.addEventListener("keydown", function (event) {
-  if (event.ctrlKey && event.key === "z") {
-    event.preventDefault(); // Evita o comportamento padrão de desfazer no navegador
-    desfazerAdicaoLogin();
-  }
-});
-
-// Função para excluir o último usuário cadastrado
-function excluirTodosLogins() {
-  if (listaUsuarios.length === 0) {
-    alert("Nenhum login para excluir.");
-    return;
-  }
-  listaUsuarios.length = 0;
-  atualizarListaLogins();
-}
-
-// Função para copiar lista e saída
-function copiarLista() {
-  if (listaUsuarios.length === 0) {
-    alert("Nenhum login foi adicionado ainda.");
-    return;
-  }
-
-  let lista = "*---------------*\n";
-  for (let login of listaUsuarios) {
-    lista += `*Usuário: ${login["Usuário"]}*\nEmail: ${login["Email"]}\nSenha: ${login["Senha"]}\n*---------------*\n`;
-  }
-
-  // Remover os últimos 25 caracteres (linhas de separação e um caractere extra)
-  lista = lista.slice(0, -18);
-  copyToClipboard(lista);
-}
-
-function copyToClipboard(text, iconElement) {
-  const el = document.createElement("textarea");
-  el.value = text;
-  document.body.appendChild(el);
-  el.select();
-  document.execCommand("copy");
-  document.body.removeChild(el);
-
-  // Mudar ícone para "check"
-  iconElement.textContent = "check";
-  iconElement.classList.add("check-icon");
-
-  // Voltar ao ícone original após 2 segundos
-  setTimeout(() => {
-    iconElement.textContent = "content_copy";
-    iconElement.classList.remove("check-icon");
-  }, 2000);
-}
-
-// Adicione as variáveis para o modal e seus elementos
-let editIndex = -1;
-
-// Função para abrir o modal e preencher os campos com os dados existentes
-function editarLogin(index) {
-  editIndex = index;
-  const login = listaUsuarios[index];
-
-  document.getElementById("editUsuario").value = login["Usuário"];
-  document.getElementById("editEmail").value = login["Email"];
-  document.getElementById("editSenha").value = login["Senha"];
-
-  modal.style.display = "block";
-}
-
-// Quando o usuário clicar em (x), fecha o modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
-
-// Quando o usuário clicar fora do modal, fecha o modal
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
-// Salvar alterações e atualizar a lista
-saveEditButton.addEventListener("click", function () {
-  if (editIndex !== -1) {
-    const usuario = document.getElementById("editUsuario").value.trim();
-    const email = document.getElementById("editEmail").value.trim();
-    const senha = document.getElementById("editSenha").value.trim();
-
-    listaUsuarios[editIndex]["Usuário"] = usuario;
-    listaUsuarios[editIndex]["Email"] = email;
-    listaUsuarios[editIndex]["Senha"] = senha;
-
-    atualizarListaLogins();
-    modal.style.display = "none";
-  }
-});
-
-document.addEventListener("click", function (event) {
-  const modalContent = document.getElementById("modalContent");
-
-  // Verifica se o clique foi fora do modal e não foi dentro do modalContent
-  if (event.target !== modal && !modalContent.contains(event.target)) {
-    modal.style.display = "none";
-  }
-});
-
-// Quando o usuário clicar fora do modal, fecha o modal
-window.onclick = function (event) {
-  if (event.target === modal) {
-    // Verifica se há seleção de texto ativa
-    const selection = window.getSelection().toString().trim();
-    if (!selection) {
-      modal.style.display = "none";
-    }
-  }
-};
 
 // Função para atualizar a lista visual de logins
 function atualizarListaLogins() {
@@ -513,6 +414,147 @@ function atualizarListaLogins() {
   }
 }
 
+// Função para excluir todos os usuários cadastrados
+function excluirTodosLogins() {
+  if (listaUsuarios.length === 0) {
+    alert("Nenhum login para excluir.");
+    return;
+  }
+  listaUsuarios.length = 0;
+  atualizarListaLogins();
+}
+
+// =============================
+// Funções de Edição e Modificação
+// =============================
+
+// Função para abrir o modal e preencher os campos com os dados existentes
+function editarLogin(index) {
+  editIndex = index;
+  const login = listaUsuarios[index];
+
+  document.getElementById("editUsuario").value = login["Usuário"];
+  document.getElementById("editEmail").value = login["Email"];
+  document.getElementById("editSenha").value = login["Senha"];
+
+  modal.style.display = "block";
+}
+
+// =============================
+// Interação com o Usuário
+// =============================
+
+// Função para exportar os logins para CSV e ajustar o tamanho das colunas
+function exportLoginsToCSV() {
+  const logins = listaUsuarios;
+  let csvContent = [["Usuário", "Email", "Senha", "Especialização"]];
+
+  logins.forEach((login) => {
+    csvContent.push([
+      login.Usuário,
+      login.Email,
+      login.Senha,
+      login.Especialização,
+    ]);
+  });
+
+  // Criar uma nova planilha
+  const ws = XLSX.utils.aoa_to_sheet(csvContent);
+  const wsCols = [
+    { wch: Math.max(...csvContent.map((row) => row[0].length)) }, // Usuário
+    { wch: Math.max(...csvContent.map((row) => row[1].length)) }, // Email
+    { wch: Math.max(...csvContent.map((row) => row[2].length)) }, // Senha
+    { wch: Math.max(...csvContent.map((row) => row[3].length)) }, // Especialização
+  ];
+  ws["!cols"] = wsCols;
+
+  // Criar um novo livro de trabalho
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Logins");
+
+  // Gerar o arquivo Excel e acionar o download
+  XLSX.writeFile(wb, "logins.xlsx");
+}
+
+// Salvar alterações e atualizar a lista
+saveEditButton.addEventListener("click", function () {
+  if (editIndex !== -1) {
+    const usuario = document.getElementById("editUsuario").value.trim();
+    const email = document.getElementById("editEmail").value.trim();
+    const senha = document.getElementById("editSenha").value.trim();
+
+    listaUsuarios[editIndex]["Usuário"] = usuario;
+    listaUsuarios[editIndex]["Email"] = email;
+    listaUsuarios[editIndex]["Senha"] = senha;
+
+    atualizarListaLogins();
+    modal.style.display = "none";
+  }
+});
+
+// Fecha o modal ao clicar no x
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// Quando o usuário clicar fora do modal, fecha o modal
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+// Fechar o modal com a tecla Esc
+window.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" || event.key === "Esc") {
+    modal.style.display = "none";
+  }
+});
+
+// Função para fechar o modal de múltiplos logins
+document
+  .querySelector("#multiLoginModal .close")
+  .addEventListener("click", function () {
+    document.getElementById("multiLoginModal").style.display = "none";
+  });
+
+// Quando o usuário clicar fora do modal, fecha o modal
+window.onclick = function (event) {
+  if (event.target === modal) {
+    // Verifica se há seleção de texto ativa
+    const selection = window.getSelection().toString().trim();
+    if (!selection) {
+      modal.style.display = "none";
+    }
+  }
+};
+
+// Função para abrir o modal de múltiplos logins
+function abrirModalMultiplosLogins() {
+  document.getElementById("multiLoginModal").style.display = "block";
+}
+
+// =============================
+// Funções Utilitárias
+// =============================
+
+// Função para copiar lista e saída
+function copiarLista() {
+  if (listaUsuarios.length === 0) {
+    alert("Nenhum login foi adicionado ainda.");
+    return;
+  }
+
+  let lista = "*---------------*\n";
+  for (let login of listaUsuarios) {
+    lista += `*Usuário: ${login["Usuário"]}*\nEmail: ${login["Email"]}\nSenha: ${login["Senha"]}\n*---------------*\n`;
+  }
+
+  // Remover os últimos 25 caracteres (linhas de separação e um caractere extra)
+  lista = lista.slice(0, -18);
+  copyToClipboard(lista);
+}
+
 function randomizeFirstLetterOfSurname(index) {
   let login = listaUsuarios[index];
   let email = login["Email"];
@@ -548,35 +590,6 @@ function randomizeFirstLetterOfSurname(index) {
   atualizarListaLogins();
 }
 
-function excluirLogin(index) {
-  listaUsuarios.splice(index, 1);
-  atualizarListaLogins();
-}
-
-function formatarNomePrimeiraLetraMaiuscula(nome) {
-  return nome
-    .toLowerCase()
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-}
-
-function removerAcentos(texto) {
-  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-}
-
-function limparUnidade() {
-  if (unidadeSelecionada === "") {
-    return;
-  }
-
-  listaUsuarios.length = 0;
-  atualizarListaLogins();
-  unidadeSelecionada = "";
-  document.getElementById("unidadeInput").value = "";
-  document.getElementById("email").value = "";
-}
-
 // Função para alternar entre modo noturno e diurno
 function toggleNightMode() {
   document.body.classList.toggle("night-mode");
@@ -587,46 +600,6 @@ function toggleNightMode() {
     icon.textContent = "dark_mode";
   }
 }
-
-// Função para exportar os logins para CSV e ajustar o tamanho das colunas
-function exportLoginsToCSV() {
-  const logins = listaUsuarios;
-  let csvContent = [["Usuário", "Email", "Senha", "Especialização"]];
-
-  logins.forEach((login) => {
-    csvContent.push([
-      login.Usuário,
-      login.Email,
-      login.Senha,
-      login.Especialização,
-    ]);
-  });
-
-  // Criar uma nova planilha
-  const ws = XLSX.utils.aoa_to_sheet(csvContent);
-  const wsCols = [
-    { wch: Math.max(...csvContent.map((row) => row[0].length)) }, // Usuário
-    { wch: Math.max(...csvContent.map((row) => row[1].length)) }, // Email
-    { wch: Math.max(...csvContent.map((row) => row[2].length)) }, // Senha
-    { wch: Math.max(...csvContent.map((row) => row[3].length)) }, // Especialização
-  ];
-  ws["!cols"] = wsCols;
-
-  // Criar um novo livro de trabalho
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, "Logins");
-
-  // Gerar o arquivo Excel e acionar o download
-  XLSX.writeFile(wb, "logins.xlsx");
-}
-
-// Evento de teclado para exportar os logins para CSV
-document.addEventListener("keydown", function (event) {
-  if (event.ctrlKey && event.key === ".") {
-    event.preventDefault();
-    exportLoginsToCSV();
-  }
-});
 
 // Atualize a função para adicionar múltiplos logins
 function adicionarMultiplosLogins() {
@@ -660,11 +633,6 @@ function adicionarMultiplosLogins() {
   // Atualiza a lista visual de logins após adicionar múltiplos logins
   atualizarListaLogins();
 }
-
-// Atualize o evento de clique do botão "Salvar" do modal de múltiplos logins
-document.getElementById("saveMultiLogin").onclick = function () {
-  adicionarMultiplosLogins();
-};
 
 // Função auxiliar para adicionar um login específico (com formatação da especialização)
 function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
@@ -739,17 +707,9 @@ function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
   historicoAdicoes.push(listaUsuarios.length - 1);
 }
 
-// Função para abrir o modal de múltiplos logins
-function abrirModalMultiplosLogins() {
-  document.getElementById("multiLoginModal").style.display = "block";
-}
-
-// Função para fechar o modal de múltiplos logins
-document
-  .querySelector("#multiLoginModal .close")
-  .addEventListener("click", function () {
-    document.getElementById("multiLoginModal").style.display = "none";
-  });
+// =============================
+// Eventos de Documentos e Elementos
+// =============================
 
 // Adiciona eventos aos botões do modal de múltiplos logins
 document
@@ -764,6 +724,91 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+// Evento de teclado para exportar os logins para CSV
+document.addEventListener("keydown", function (event) {
+  if (event.ctrlKey && event.key === ".") {
+    event.preventDefault();
+    exportLoginsToCSV();
+  }
+});
+
+document.addEventListener("click", function (event) {
+  const modalContent = document.getElementById("modalContent");
+
+  // Verifica se o clique foi fora do modal e não foi dentro do modalContent
+  if (event.target !== modal && !modalContent.contains(event.target)) {
+    modal.style.display = "none";
+  }
+});
+
+// Captura do evento de teclado global para Ctrl + Z
+document.addEventListener("keydown", function (event) {
+  if (event.ctrlKey && event.key === "z") {
+    event.preventDefault(); // Evita o comportamento padrão de desfazer no navegador
+    desfazerAdicaoLogin();
+  }
+});
+
+// Evento de input para formatar prefixo
+document.getElementById("usuario").addEventListener("input", function () {
+  const usuarioInput = document.getElementById("usuario");
+  const prefixoSelect = document.getElementById("prefixo");
+  let valor = usuarioInput.value.trim();
+
+  if (/^dr\.?\s+/i.test(valor)) {
+    prefixoSelect.value = "Dr.";
+    usuarioInput.value = valor.replace(/^dr\.?\s+/i, "");
+  } else if (/^dra\.?\s+/i.test(valor)) {
+    prefixoSelect.value = "Dra.";
+    usuarioInput.value = valor.replace(/^dra\.?\s+/i, "");
+  } else if (/^tec\.?\s+/i.test(valor)) {
+    prefixoSelect.value = "Tec.";
+    usuarioInput.value = valor.replace(/^tec\.?\s+/i, "");
+  } else if (/^enf\.?\s+/i.test(valor)) {
+    prefixoSelect.value = "Enf.";
+    usuarioInput.value = valor.replace(/^enf\.?\s+/i, "");
+  }
+});
+
+// Evento de recarregar a página
+document.getElementById("reloadPage").addEventListener("click", function () {
+  location.reload();
+});
+
+// Evento de tecla Enter para adicionar login
+document
+  .getElementById("usuario")
+  .addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      const usuario = document.getElementById("usuario").value.trim();
+      const prefixo = document.getElementById("prefixo").value;
+      const unidadeInput = document.getElementById("unidadeInput").value.trim();
+
+      if (usuario && (prefixo || prefixo === "Nenhum") && unidadeSelecionada) {
+        adicionarLogin();
+      } else {
+        alert("Preencha todos os campos antes de adicionar um login.");
+      }
+    }
+  });
+
+// Evento de input para unidade
+document
+  .getElementById("unidadeInput")
+  .addEventListener("input", function (event) {
+    const unidadeInput = event.target;
+    unidadeInput.value = formatarCNPJSeForCNPJ(unidadeInput.value);
+    atualizarSugestoesUnidade(); // Atualiza as sugestões conforme o usuário digita
+  });
+
+// Evento de clique fora das sugestões
+document.body.addEventListener("click", function (event) {
+  if (sugestoes.style.display === "block" && event.target !== unidadeInput) {
+    sugestoes.style.display = "none";
+  }
+});
+
 // Quando o usuário clicar fora do modal, fecha o modal
 window.onclick = function (event) {
   const modal = document.getElementById("multiLoginModal");
@@ -774,6 +819,11 @@ window.onclick = function (event) {
       modal.style.display = "none";
     }
   }
+};
+
+// Atualize o evento de clique do botão "Salvar" do modal de múltiplos logins
+document.getElementById("saveMultiLogin").onclick = function () {
+  adicionarMultiplosLogins();
 };
 
 // Adiciona evento ao botão de fechar
