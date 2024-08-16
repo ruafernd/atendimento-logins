@@ -475,6 +475,12 @@ const unidadesEmails = [
     servidor: "Geral2",
   },
   {
+   unidade: "DIAGNÓSTICA - GERAL2", 
+   email: "diagnostica.com",
+   cnpj: "35.589.456/0001-13",
+   servidor: "Geral2"
+  },
+  {
     unidade: "CLINICA TOP - GERAL2",
     email: "clinicatop.com",
     cnpj: "09.356.784/0001-06",
