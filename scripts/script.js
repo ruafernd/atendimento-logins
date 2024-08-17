@@ -105,11 +105,17 @@ function limparUnidade() {
     return;
   }
 
+  // Limpa a lista de usuários
   listaUsuarios.length = 0;
   atualizarListaLogins();
+
+  // Redefine a unidade selecionada e limpa os campos
   unidadeSelecionada = "";
   document.getElementById("unidadeInput").value = "";
   document.getElementById("email").value = "";
+
+  // Atualiza a lista de sugestões para mostrar todas as unidades disponíveis
+  atualizarSugestoesUnidade(true); // Passa um parâmetro para indicar que deve mostrar todas as unidades
 }
 
 // =============================
