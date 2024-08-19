@@ -1,3 +1,11 @@
+/* Reset de margens e preenchimentos padrão */
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+/* Corpo do site */
 body {
   display: flex;
   flex-direction: column;
@@ -9,14 +17,23 @@ body {
   color: white;
   font-family: Arial, sans-serif;
   transition: background-color 0.5s ease, color 0.5s ease;
-  overflow-x: hidden; /* Para remover a rolagem horizontal */
-  overflow-y: hidden; /* Para remover a rolagem vertical */
+  overflow: hidden;
 }
 
 .night-mode .dark-logo {
+  opacity: 1;
+  position: static;
+  z-index: 1;
   filter: brightness(0) invert(1);
 }
 
+.dark-logo {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+/*** Estilo para o container de login ***/
 .login-container {
   background-color: aliceblue;
   padding: 10px;
@@ -27,9 +44,11 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; /* Certifique-se de que o container pai tem posição relativa */
+  position: relative; 
   transition: background-color 0.5s ease, color 0.5s ease;
 }
+
+
 /* Adicione estas classes para o ícone de recarregar */
 .refresh-icon {
   position: absolute;
@@ -45,6 +64,7 @@ body {
 body.night-mode .refresh-icon {
   color: white;
 }
+
 
 .prefixo-container {
   width: 80%;
@@ -431,11 +451,7 @@ body.night-mode .light-logo {
   z-index: -1;
 }
 
-body.night-mode .dark-logo {
-  opacity: 1;
-  position: static;
-  z-index: 1;
-}
+
 
 .light-logo {
   opacity: 1;
@@ -443,11 +459,7 @@ body.night-mode .dark-logo {
   z-index: 1;
 }
 
-.dark-logo {
-  opacity: 0;
-  position: absolute;
-  z-index: -1;
-}
+
 
 /* Estilo para o ícone de alternância */
 .toggle-container {
