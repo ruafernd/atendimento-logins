@@ -7,7 +7,7 @@ Este sistema foi desenvolvido para facilitar a criação e gerenciamento de logi
 - **Adicionar Login:** Permite adicionar novos logins associados a unidades específicas.
 - **Excluir Último Login:** Remove o último login adicionado.
 - **Copiar Usuários:** Facilita a cópia da lista de usuários gerados.
-- **Logins em massa:** Permite adicionar vários logins em massa, facilitando a criação de logins quando o cliente nos fornece uma lista de usuários.
+- **Logins em massa:** Permite adicionar vários logins em massa, facilitando a criação de logins quando o cliente nos fornece uma lista de usuários
 
 ## Instruções de Uso
 
