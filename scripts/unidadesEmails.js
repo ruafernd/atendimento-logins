@@ -1031,9 +1031,9 @@ const unidadesEmails = [
   },
   {
    unidade: "AMOR SAUDE ARARAS - SP3",
-   email: "",
-   cnpj: "",
-   servidor: ""
+   email: "amorsaudeararas.com",
+   cnpj: "32.283.114/0001-82",
+   servidor: "SP3"
   },
   {
     unidade: "AMOR SAUDE FERRAZ DE VASCONCELOS - SP3",
