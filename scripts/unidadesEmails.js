@@ -1960,6 +1960,12 @@ const unidadesEmails = [
     servidor: "Norte",
   },
   {
+   unidade: "APOIO AMOR SAUDE BELEM BENGUI - NORTE",
+   email: "apoiobelem.com",
+   cnpj: "51.980.945/0001-58",
+   servidor: "Norte"
+  },
+  {
     unidade: "CARTAO DE TODOS PIRITUBA / PERUS - NORTE",
     email: "cartaodetodosperus.com",
     cnpj: "00.000.000/0000-00",
