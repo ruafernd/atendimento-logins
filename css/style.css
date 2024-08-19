@@ -33,7 +33,7 @@ body {
   z-index: -1;
 }
 
-/*** Estilo para o container de login ***/
+/** Estilo para o container de login **/
 .login-container {
   background-color: aliceblue;
   padding: 10px;
@@ -44,10 +44,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative; 
+  position: relative;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
-
 
 /* Adicione estas classes para o ícone de recarregar */
 .refresh-icon {
@@ -65,7 +64,6 @@ body.night-mode .refresh-icon {
   color: white;
 }
 
-
 .prefixo-container {
   width: 80%;
 }
@@ -81,9 +79,25 @@ body.night-mode .refresh-icon {
   margin-bottom: 10px;
 }
 
+.login-item-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+}
+
+.login-item .material-icons {
+  font-size: 16px;
+  color: black !important;
+}
+
 /* Estilo para o campo de email padrão com largura personalizada e ícone */
 .input-field.no-label {
   position: relative;
+  margin-top: 10px;
 }
 
 .input-field.no-label i.material-icons {
@@ -96,7 +110,6 @@ body.night-mode .refresh-icon {
 }
 
 /* Estilo para lista de Unidades */
-
 #sugestoes {
   max-height: 150px;
   overflow-y: auto;
@@ -115,16 +128,22 @@ body.night-mode .refresh-icon {
   z-index: 1;
 }
 
+body.night-mode #sugestoes {
+  background-color: #444;
+  color: white;
+}
+
 /* Efeito de escurecimento quando o mouse estiver sobre o item */
 .sugestao:hover {
   background-color: #e0e0e0; /* Cor de fundo escurecida */
 }
 
-/* Efeito de escurecimento quando o mouse estiver sobre o item */
+/* Efeito de escurecimento quando o mouse estiver sobre a unidade no modo noturno */
 body.night-mode .sugestao:hover {
-  background-color: #000000; /* Cor de fundo escurecida */
+  background-color: #000000;
 }
 
+/* Estilo para os inputs*/
 input[type="text"],
 select,
 #unidadeInput,
@@ -145,11 +164,6 @@ select,
     border-bottom-color 0.5s ease;
 }
 
-/* Distância entre os componentes */
-.input-field.no-label {
-  margin-top: 10px;
-}
-
 /*Estilo para animação ao selecionar campo*/
 input[type="text"]:focus,
 select:focus,
@@ -162,20 +176,9 @@ select:focus,
 
 /*Estilo para lista de unidades*/
 .sugestao {
-  padding: 5px;
+  padding: 3px;
   cursor: pointer;
-  font-size: 14px;
-}
-
-.login-item .material-icons {
-  font-size: 16px; /* Altere o tamanho conforme necessário */
-  color: black !important;
-}
-.action-buttons {
-  display: flex;
-  justify-content: flex-start; /* Alinha os ícones à esquerda */
-  max-width: 490px;
-  margin-left: -10px; /* Ajusta a margem para a esquerda */
+  font-size: 13px;
 }
 
 .user-info-container {
@@ -196,24 +199,10 @@ select:focus,
   stroke: black; /* Cor do contorno do ícone */
   stroke-width: 2; /* Espessura do contorno */
   margin-top: 4px; /* Adiciona margem superior para espaçar os ícones */
-}
-
-.edit-icon {
   cursor: pointer; /* Faz o ícone parecer um botão */
-  color: black;
 }
 
-.reload-icon {
-  cursor: pointer;
-  color: black;
-}
-
-.delete-icon {
-  cursor: pointer; /* Faz o ícone parecer um botão */
-  color: black;
-}
-
-/* The Modal (background) */
+/* Estilo para o modal */
 .modal {
   display: none;
   position: fixed;
@@ -223,7 +212,7 @@ select:focus,
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4); /* fundo escuro semi-transparente */
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Modal Content/Box */
@@ -240,6 +229,60 @@ select:focus,
   top: 90px; /* Ajusta a distância do topo */
 }
 
+body.night-mode .modal-content {
+  background-color: #333;
+  color: white;
+}
+
+/* Estilo básico para o modal de múltiplos logins */
+#multiLoginModal {
+  display: none; /* Escondido por padrão */
+  position: fixed; /* Fixo na tela */
+  z-index: 1000; /* Em cima de outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto; /* Permite rolagem se necessário */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+}
+
+/* Botão de fechar do modal de múltiplos logins */
+#multiLoginModal .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Estilo do textarea para múltiplos logins */
+#multiLoginModal textarea {
+  width: calc(
+    100% - 22px
+  ); /* Ajuste a largura para compensar padding e bordas */
+  height: 200px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffffff; /* Fundo claro por padrão */
+  color: black; /* Texto preto por padrão */
+  border: 1px solid #ccc;
+  resize: none; /* Impede redimensionamento */
+  box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
+}
+
+.night-mode #multiLoginModal select {
+  background-color: #444;
+  color: white;
+  border: 1px solid #555;
+}
+
+.night-mode #multiLoginModal textarea {
+  background-color: #444;
+  color: white;
+  border: 1px solid #555;
+}
+
+/*Css do modal de edição de login*/
 .input-container {
   margin-bottom: 10px;
   position: relative;
@@ -260,7 +303,7 @@ select:focus,
   font-size: 16px; /* ajusta o tamanho do texto */
 }
 
-/* The Close Button */
+/* Botão de fechar do modal de edição de login */
 .close {
   color: #aaa;
   float: right;
@@ -275,11 +318,13 @@ select:focus,
   cursor: pointer;
 }
 
+/* Botão de copiar*/
 .copy-icon {
   margin-left: 5px;
   cursor: pointer;
 }
 
+/* Ícone de verificação*/
 .material-icons.check-icon {
   color: green; /* ou qualquer cor que você preferir */
 }
@@ -299,23 +344,6 @@ button {
     border-bottom-color 0.5s ease;
 }
 
-/* Código para adicionar animação ao selecionar */
-input[type="text"]:focus::before,
-select:focus::before,
-#unidadeInput:focus::before,
-#email:focus::before,
-#usuario:focus::before,
-#material-icons::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: 0;
-  height: 2px;
-  background-color: #1d83e0;
-  transition: width 0.5s ease, left 0.5s ease;
-}
-
 /* Estilo para rótulo "Prefixo" */
 label[for="prefixo"] {
   font-size: 14px;
@@ -323,9 +351,7 @@ label[for="prefixo"] {
 
 /* Estilo para campo Prefixo (select) */
 select#prefixo.input-field {
-  width: 100%;
-
-  padding: 1px;
+  padding: 2px;
   margin-bottom: 10px;
   border: none;
   border-bottom: 1.9px solid #ccc;
@@ -334,39 +360,6 @@ select#prefixo.input-field {
   background-color: transparent;
   outline: none;
   transition: border-bottom-color 1s ease;
-}
-
-.login-item-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-}
-
-.action-buttons {
-  display: flex;
-  justify-content: space-between;
-  max-width: 490px;
-}
-
-/* Configuração para unidades */
-div.login-container input#unidadeInput.input-field {
-  width: 279px;
-  font-size: 14px;
-  padding-top: 13px;
-  padding-left: 30px;
-  margin-bottom: 19px;
-}
-
-/* Configuração para usuários */
-div.login-container input#usuario.input-field {
-  width: 272px;
-  padding-top: 14px;
-  font-size: 14px;
-  margin-bottom: 19px;
 }
 
 /* Cor Prefixo e Email padrão */
@@ -386,12 +379,20 @@ label {
   float: right;
   margin-top: 10px;
   transition: background-color 0.5s ease, color 0.5s ease; /* Adicione a transição */
-
   overflow-y: auto;
   flex-direction: column-reverse;
-
   max-height: 250px;
   max-width: 900px;
+}
+
+/* Estilo para o modo noturno */
+body.night-mode .login-list {
+  background-color: #333;
+  color: white;
+}
+
+body.night-mode .login-list .material-icons {
+  color: white !important;
 }
 
 /* Estilo para o modo noturno */
@@ -410,33 +411,7 @@ body.night-mode .servidor-info {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-body.night-mode input,
-body.night-mode select,
-body.night-mode #unidadeInput,
-body.night-mode #email,
-body.night-mode #usuario {
-  background-color: #333;
-  color: white;
-  border-bottom: 1.9px solid #888;
-}
-
 body.night-mode .material-icons {
-  color: white;
-}
-
-body.night-mode .modal-content {
-  background-color: #333;
-  color: white;
-}
-
-.night-mode #multiLoginModal textarea {
-  background-color: #444;
-  color: white;
-  border: 1px solid #555;
-}
-
-body.night-mode #sugestoes {
-  background-color: #444;
   color: white;
 }
 
@@ -451,15 +426,11 @@ body.night-mode .light-logo {
   z-index: -1;
 }
 
-
-
 .light-logo {
   opacity: 1;
   position: static;
   z-index: 1;
 }
-
-
 
 /* Estilo para o ícone de alternância */
 .toggle-container {
@@ -476,39 +447,6 @@ body.night-mode .light-logo {
   background: none;
   border: none;
   outline: none;
-}
-
-/* Estilo para o modo noturno */
-body.night-mode .login-list {
-  background-color: #333;
-  color: white;
-}
-
-body.night-mode .login-list .material-icons {
-  color: white !important;
-}
-
-/* Estilo para o modo noturno */
-body.night-mode .login-list {
-  background-color: #333; /* Cor de fundo mais escura */
-  color: white; /* Cor da fonte branca */
-}
-
-body.night-mode .login-list .material-icons {
-  color: white !important; /* Cor dos ícones na lista de logins */
-}
-
-/* Estilo para o modo noturno */
-body.night-mode input,
-body.night-mode select,
-body.night-mode #unidadeInput,
-body.night-mode #email,
-body.night-mode #usuario {
-  transition: background-color 0.5s ease, color 0.5s ease,
-    border-bottom-color 0.5s ease;
-  background-color: #333; /* Cor de fundo escura para inputs */
-  color: rgb(255, 255, 255) !important; /* Cor da fonte branca para inputs */
-  border-bottom-color: #ffffff; /* Cor do fundo do input */
 }
 
 /* Estilo para input focado no modo noturno */
@@ -635,16 +573,6 @@ body #usuario {
   border-bottom: 1.9px solid #ccc; /* Cor da borda inferior padrão */
 }
 
-body.night-mode {
-  background: linear-gradient(90deg, #000000, #2c2c2c);
-  color: white;
-}
-
-body.night-mode .login-container {
-  background-color: #333;
-  color: white;
-}
-
 body.night-mode input,
 body.night-mode select,
 body.night-mode #unidadeInput,
@@ -689,46 +617,4 @@ body.night-mode ::-webkit-scrollbar-thumb {
 
 body.night-mode ::-webkit-scrollbar-thumb:hover {
   background: #555;
-}
-
-/* Estilo básico para o modal de múltiplos logins */
-#multiLoginModal {
-  display: none; /* Escondido por padrão */
-  position: fixed; /* Fixo na tela */
-  z-index: 1000; /* Em cima de outros elementos */
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto; /* Permite rolagem se necessário */
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
-}
-
-/* Botão de fechar do modal de múltiplos logins */
-#multiLoginModal .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-/* Estilo do textarea para múltiplos logins */
-#multiLoginModal textarea {
-  width: calc(
-    100% - 22px
-  ); /* Ajuste a largura para compensar padding e bordas */
-  height: 200px;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #ffffff; /* Fundo claro por padrão */
-  color: black; /* Texto preto por padrão */
-  border: 1px solid #ccc;
-  resize: none; /* Impede redimensionamento */
-  box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
-}
-
-.night-mode #multiLoginModal select {
-  background-color: #444;
-  color: white;
-  border: 1px solid #555;
 }
