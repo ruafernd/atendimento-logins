@@ -36,7 +36,7 @@ const unidadesEmails = [
     servidor: "Geral",
   },
   {
-    unidade: "MEDICAL CENTER - GERAL2",
+    unidade: "MEDICAL CENTER - GERAL",
     email: "medicalcenter.com",
     cnpj: "18.514.920/0001-93",
     servidor: "Geral",
