@@ -39,7 +39,7 @@ const unidadesEmails = [
     unidade: "MEDICAL CENTER - GERAL",
     email: "medicalcenter.com",
     cnpj: "18.514.920/0001-93",
-    servidor: "Gertal",
+    servidor: "Geral",
   },
   {
     unidade: "LIVRE DIAGNÓSTICO - GERAL",
