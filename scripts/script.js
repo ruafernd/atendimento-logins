@@ -174,7 +174,6 @@ function adicionarLogin() {
   const usuarioInput = document.getElementById("usuario");
   let usuario = usuarioInput.value.trim().replace(/\s+/g, " "); // Remove espaços extras entre palavras
   const prefixoSelecionado = document.getElementById("prefixo").value;
-  const unidadeInput = document.getElementById("unidadeInput").value.trim();
 
   if (
     !usuario ||
@@ -642,7 +641,6 @@ function adicionarMultiplosLogins() {
 
 // Função auxiliar para adicionar um login específico (com formatação da especialização)
 function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
-  const unidadeInput = document.getElementById("unidadeInput").value.trim();
 
   if (!usuario || (!prefixo && prefixo !== "Nenhum") || !unidadeSelecionada) {
     return;
@@ -789,8 +787,6 @@ document
       event.preventDefault();
       const usuario = document.getElementById("usuario").value.trim();
       const prefixo = document.getElementById("prefixo").value;
-      const unidadeInput = document.getElementById("unidadeInput").value.trim();
-
       if (usuario && (prefixo || prefixo === "Nenhum") && unidadeSelecionada) {
         adicionarLogin();
       } else {
