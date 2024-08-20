@@ -113,6 +113,7 @@ body.night-mode .refresh-icon {
 #sugestoes {
   max-height: 150px;
   overflow-y: auto;
+  top: 49px;
   display: none;
   position: absolute;
   background-color: white;
@@ -142,6 +143,8 @@ body.night-mode #sugestoes {
 body.night-mode .sugestao:hover {
   background-color: #000000;
 }
+
+
 
 /* Estilo para os inputs*/
 input[type="text"],
