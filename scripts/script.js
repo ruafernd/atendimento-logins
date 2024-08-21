@@ -135,8 +135,8 @@ function atualizarSugestoesUnidade() {
   // Filtra e ordena as unidades
   const unidadesFiltradas = unidadesEmails
     .filter((item) => {
-      const unidadeMinuscula = item.unidade.toLowerCase();
-      const emailMinusculo = item.email.toLowerCase();
+      const unidadeMinuscula = removerAcentos(item.unidade.toLowerCase());
+      const emailMinusculo = removerAcentos(item.email.toLowerCase());
       const cnpjFormatado = item.cnpj ? item.cnpj.replace(/[./]/g, "") : ""; // Remove apenas os caracteres . e / do CNPJ para comparação
       const cnpj2Formatado = item.cnpj2 ? item.cnpj2.replace(/[./]/g, "") : "";
 
@@ -165,6 +165,7 @@ function atualizarSugestoesUnidade() {
 
   sugestoes.style.display = sugestoes.childNodes.length > 0 ? "block" : "none"; // Exibe ou oculta as sugestões conforme necessário
 }
+
 
 // =============================
 // Manipulação de Logins
