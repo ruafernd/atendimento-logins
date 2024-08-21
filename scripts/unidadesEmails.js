@@ -1981,7 +1981,7 @@ const unidadesEmails = [
    unidade: "CARTÃO DE TODOS PAULISTA - NORTE",
    email: "ctpaulista.com",
    cnpj: "31.031.513/0001-93",
-   servidor: "Norte "
+   servidor: "Norte"
   },
   {
     unidade: "CARTAO DE TODOS ERMELINO MATARAZZO - NORTE",
