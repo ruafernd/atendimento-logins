@@ -1828,6 +1828,12 @@ const unidadesEmails = [
     servidor: "Norte",
   },
   {
+   unidade: "CARTÃO DE TODOS PAULISTA - NORTE",
+   email: "ctpaulista.com",
+   cnpj: "31.031.513/0001-93",
+   servidor: "Norte",
+  },
+  {
     unidade: "AMOR SAUDE MACAPA - NORTE",
     email: "asmacapa.com",
     cnpj: "28.740.370/0001-84",
