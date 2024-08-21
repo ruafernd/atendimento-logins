@@ -170,16 +170,103 @@ function atualizarSugestoesUnidade() {
 // Manipulação de Logins
 // =============================
 
+const especialidadesPredefinidas = [
+  "Cardiologista", "Cardio",
+  "Dermatologista", "Derma",
+  "Neurologista", "Neuro",
+  "Pediatra", "Pedi",
+  "Clínico Geral", "Clínico",
+  "Endocrinologista", "Endo",
+  "Ginecologista", "Gineco",
+  "Obstetra", "Obs",
+  "Oftalmologista", "Oftalmo",
+  "Otorrinolaringologista", "Otorrino",
+  "Ortopedista", "Ortopedia",
+  "Pneumologista", "Pneumo",
+  "Reumatologista", "Reumato",
+  "Urologista", "Uro",
+  "Oncologista", "Onco",
+  "Hematologista", "Hematolo",
+  "Gastroenterologista", "Gastro",
+  "Nefrologista", "Nefro",
+  "Infectologista", "Infecto",
+  "Psiquiatra", "Psique",
+  "Cirurgião Geral", "Cirurgião",
+  "Cirurgião Plástico", "Plástico",
+  "Cirurgião Cardíaco", "Cardíaco",
+  "Cirurgião Vascular", "Vascular",
+  "Proctologista", "Procto",
+  "Medicina do Trabalho", "Trabalho",
+  "Medicina de Família e Comunidade", "Família",
+  "Medicina Esportiva", "Esportiva",
+  "Radiologista", "Radio",
+  "Anestesiologista", "Aneste",
+  "Terapia Intensiva", "Intensiva",
+  "Geriatra", "Geri",
+  "Medicina Nuclear", "Nuclear",
+  "Medicina do Sono", "Sono",
+  "Patologista", "Patolo"
+];
+
+function identificarEspecialidade(usuario) {
+  // Normalizar o texto do usuário para comparações
+  let usuarioNormalizado = removerAcentos(usuario.toLowerCase()).trim();
+
+  // Verificar se o nome do usuário corresponde exatamente a uma especialidade
+  for (const especialidade of especialidadesPredefinidas) {
+    const especialidadeNormalizada = removerAcentos(especialidade.toLowerCase());
+
+    // Se o nome do usuário for exatamente uma especialidade, retorna como está
+    if (usuarioNormalizado === especialidadeNormalizada) {
+      return {
+        especialidade: especialidade,
+        usuarioAtualizado: usuario
+      };
+    }
+  }
+
+  // Procurar por uma correspondência de especialidade no nome do usuário
+  for (const especialidade of especialidadesPredefinidas) {
+    const especialidadeNormalizada = removerAcentos(especialidade.toLowerCase());
+
+    // Se a especialidade estiver contida no nome do usuário
+    if (usuarioNormalizado.includes(especialidadeNormalizada)) {
+      // Remover a especialidade do nome do usuário, se houver outro nome antes dela
+      usuarioNormalizado = usuarioNormalizado.replace(especialidadeNormalizada, "").trim();
+
+      // Se o que sobrar for vazio, significa que o nome era apenas a especialidade
+      if (usuarioNormalizado === "") {
+        return {
+          especialidade: especialidade,
+          usuarioAtualizado: especialidade // A especialidade é o nome completo
+        };
+      }
+
+      // Retornar a especialidade encontrada e o nome de usuário atualizado
+      return {
+        especialidade: especialidade,
+        usuarioAtualizado: usuarioNormalizado
+      };
+    }
+  }
+
+  // Se nenhuma especialidade for encontrada, retorna o usuário original sem modificações
+  return {
+    especialidade: "",
+    usuarioAtualizado: usuario
+  };
+}
+
+
+
+
 function adicionarLogin() {
   const usuarioInput = document.getElementById("usuario");
-  let usuario = usuarioInput.value.trim().replace(/\s+/g, " "); // Remove espaços extras entre palavras
+  let usuario = usuarioInput.value.trim().replace(/\s+/g, " ");
   const prefixoSelecionado = document.getElementById("prefixo").value;
+  const unidadeSelecionada = document.getElementById("unidadeInput").value.trim();
 
-  if (
-    !usuario ||
-    (!prefixoSelecionado && prefixoSelecionado !== "Nenhum") ||
-    !unidadeSelecionada
-  ) {
+  if (!usuario || (!prefixoSelecionado && prefixoSelecionado !== "Nenhum") || !unidadeSelecionada) {
     alert("Preencha todos os campos antes de adicionar um login.");
     return;
   }
@@ -192,52 +279,47 @@ function adicionarLogin() {
   } else if (prefixoSelecionado === "Tec.") {
     usuario = usuario.replace(/^tec\.?\s+/i, "").trim();
   } else if (prefixoSelecionado === "Enf.") {
-    usuario = usuario.replace(/^tec\.?\s+/i, "").trim();
+    usuario = usuario.replace(/^enf\.?\s+/i, "").trim();
   }
 
-  // Extraindo o nome e a especialização
-  const [nomeUsuario, especializacao = ""] = usuario.split(" - ");
+  // Identificar especialidade e atualizar o nome do usuário
+  const { especialidade, usuarioAtualizado } = identificarEspecialidade(usuario);
+
+  // Caso o nome de usuário seja exatamente uma especialidade
+  let nomeFormatado = usuarioAtualizado || especialidade;
 
   // Formatar a especialização com a primeira letra maiúscula
-  const especializacaoFormatada =
-    especializacao.charAt(0).toUpperCase() +
-    especializacao.slice(1).toLowerCase();
+  const especializacaoFormatada = especialidade
+    ? especialidade.charAt(0).toUpperCase() + especialidade.slice(1).toLowerCase()
+    : "";
 
   // Formatar o nome com o prefixo selecionado
-  let nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(nomeUsuario)}`;
   if (prefixoSelecionado !== "Nenhum") {
-    nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(
-      prefixoSelecionado
-    )} ${nomeFormatado}`;
+    nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(prefixoSelecionado)} ${nomeFormatado}`;
   }
 
-  let partesNome = nomeUsuario.split(" ");
-  let primeiroNome = partesNome[0].toLowerCase();
-  let primeiraLetraSegundoNome = partesNome[partesNome.length - 1]
-    .toLowerCase()
-    .charAt(0);
+  // Formatar partes do nome para e-mail e senha
+  const partesNome = usuarioAtualizado.split(" ");
+  const primeiroNome = removerAcentos(partesNome[0] || '').toLowerCase();
+  const ultimaParteNome = removerAcentos(partesNome[partesNome.length - 1] || '').toLowerCase();
 
-  let emailDominio = obterDominioEmail(unidadeSelecionada);
+  const emailDominio = obterDominioEmail(unidadeSelecionada);
 
-  let emailFinal = `${
+  const emailFinal = `${
     prefixoSelecionado !== "Nenhum"
       ? prefixoSelecionado.toLowerCase().replace(".", "")
       : ""
-  }${removerAcentos(primeiroNome)}${removerAcentos(
-    primeiraLetraSegundoNome
-  )}@${removerAcentos(emailDominio)}`;
+  }${primeiroNome}${ultimaParteNome.charAt(0)}@${removerAcentos(emailDominio)}`;
 
-  let senha = `${
+  const senha = `${
     prefixoSelecionado !== "Nenhum"
       ? prefixoSelecionado.toLowerCase().replace(".", "")
       : ""
-  }${removerAcentos(primeiroNome)}${removerAcentos(
-    primeiraLetraSegundoNome
-  )}`.toLowerCase();
+  }${primeiroNome}${ultimaParteNome.charAt(0)}`.toLowerCase();
 
   // Adiciona o login ao array listaUsuarios
   listaUsuarios.push({
-    Usuário: nomeFormatado,
+    Usuário: formatarNomePrimeiraLetraMaiuscula(nomeFormatado),
     Especialização: especializacaoFormatada,
     Senha: senha,
     Email: emailFinal,
@@ -253,6 +335,7 @@ function adicionarLogin() {
   usuarioInput.value = "";
   document.getElementById("sugestoes").innerHTML = "";
 }
+
 
 function excluirLogin(index) {
   listaUsuarios.splice(index, 1);
@@ -606,7 +689,84 @@ function toggleNightMode() {
   }
 }
 
-// Atualize a função para adicionar múltiplos logins
+function adicionarLoginEspecifico(login, prefixo, unidadeSelecionada) {
+  // Remove o prefixo do input se ele coincidir com o prefixo selecionado
+  if (prefixo === "Dr.") {
+    login = login.replace(/^dr\.?\s+/i, "").trim();
+  } else if (prefixo === "Dra.") {
+    login = login.replace(/^dra\.?\s+/i, "").trim();
+  } else if (prefixo === "Tec.") {
+    login = login.replace(/^tec\.?\s+/i, "").trim();
+  } else if (prefixo === "Enf.") {
+    login = login.replace(/^enf\.?\s+/i, "").trim();
+  }
+
+  // Normalizar o texto do login
+  const loginNormalizado = removerAcentos(login.toLowerCase());
+
+  // Verificar e remover a especialidade do nome do login
+  let especializacao = "";
+  for (const especialidade of especialidadesPredefinidas) {
+    const especialidadeNormalizada = removerAcentos(especialidade.toLowerCase());
+    // Checar se a especialidade está incluída no nome do login
+    if (loginNormalizado.includes(especialidadeNormalizada)) {
+      especializacao = especialidade;
+      // Remove a especialidade da string do login usando uma expressão regular para variações
+      const regex = new RegExp(`\\b${especialidade.replace(/[\W_]+/g, "\\$&")}\\b`, 'gi');
+      login = login.replace(regex, "").trim();
+      break;
+    }
+  }
+
+  // Caso o nome do login seja exatamente uma especialidade
+  if (especializacao && login === "") {
+    login = especializacao;
+  }
+
+  // Formatar a especialização com a primeira letra maiúscula
+  const especializacaoFormatada =
+    especializacao.charAt(0).toUpperCase() +
+    especializacao.slice(1).toLowerCase();
+
+  // Formatar o nome com o prefixo selecionado
+  let nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(login)}`;
+  if (prefixo !== "Nenhum") {
+    nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(prefixo)} ${nomeFormatado}`;
+  }
+
+  // Formatar partes do nome para e-mail e senha
+  let partesNome = login.split(" ");
+  let primeiroNome = removerAcentos(partesNome[0] || '').toLowerCase();
+  let ultimaParteNome = removerAcentos(partesNome[partesNome.length - 1] || '').toLowerCase();
+
+  let emailDominio = obterDominioEmail(unidadeSelecionada);
+
+  let emailFinal = `${
+    prefixo !== "Nenhum"
+      ? prefixo.toLowerCase().replace(".", "")
+      : ""
+  }${primeiroNome}${ultimaParteNome.charAt(0)}@${removerAcentos(emailDominio)}`;
+
+  let senha = `${
+    prefixo !== "Nenhum"
+      ? prefixo.toLowerCase().replace(".", "")
+      : ""
+  }${primeiroNome}${ultimaParteNome.charAt(0)}`.toLowerCase();
+
+  // Adiciona o login ao array listaUsuarios
+  listaUsuarios.push({
+    Usuário: nomeFormatado,
+    Especialização: especializacaoFormatada,
+    Senha: senha,
+    Email: emailFinal,
+  });
+
+  // Adiciona a operação ao histórico de adições
+  historicoAdicoes.push(listaUsuarios.length - 1);
+}
+
+
+// Função para adicionar múltiplos logins
 function adicionarMultiplosLogins() {
   const input = document.getElementById("multiLoginInput").value.trim();
   const prefixo = document.getElementById("multiLoginPrefixo").value;
@@ -619,6 +779,7 @@ function adicionarMultiplosLogins() {
     !unidadeSelecionada ||
     !unidadesEmails.some((u) => u.unidade === unidadeSelecionada)
   ) {
+    alert("Selecione uma unidade válida.");
     return;
   }
 
@@ -639,77 +800,6 @@ function adicionarMultiplosLogins() {
   atualizarListaLogins();
 }
 
-// Função auxiliar para adicionar um login específico (com formatação da especialização)
-function adicionarLoginEspecifico(usuario, prefixo, unidadeSelecionada) {
-
-  if (!usuario || (!prefixo && prefixo !== "Nenhum") || !unidadeSelecionada) {
-    return;
-  }
-
-  // Remover o prefixo do input se ele coincidir com o prefixo selecionado
-  if (prefixo === "Dr.") {
-    usuario = usuario.replace(/^dr\.?\s+/i, "").trim();
-  } else if (prefixo === "Dra.") {
-    usuario = usuario.replace(/^dra\.?\s+/i, "").trim();
-  }
-
-  // Extraindo o nome e a especialização
-  const [nomeUsuario, especializacao = ""] = usuario.split(" - ");
-
-  const usuarioFormatado = nomeUsuario.trim();
-  const especializacaoFormatada =
-    especializacao.trim().charAt(0).toUpperCase() +
-    especializacao.trim().slice(1).toLowerCase();
-
-  let nomeFormatado = "";
-
-  if (prefixo !== "Nenhum") {
-    nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(
-      prefixo
-    )} ${formatarNomePrimeiraLetraMaiuscula(usuarioFormatado)}`;
-  } else {
-    nomeFormatado = `${formatarNomePrimeiraLetraMaiuscula(usuarioFormatado)}`;
-  }
-
-  let partesNome = usuarioFormatado.split(" ");
-  let primeiroNome = partesNome[0].toLowerCase();
-  let ultimaLetraUltimoNome =
-    partesNome.length > 1
-      ? partesNome[partesNome.length - 1].toLowerCase().charAt(0)
-      : partesNome[0].toLowerCase().charAt(0);
-
-  let emailDominio = obterDominioEmail(unidadeSelecionada);
-
-  // Construção do email e senha não deve incluir a especialização
-  let emailFinal = "";
-
-  if (prefixo !== "Nenhum") {
-    emailFinal = `${prefixo.toLowerCase().replace(".", "")}${removerAcentos(
-      primeiroNome
-    )}${removerAcentos(ultimaLetraUltimoNome)}@${removerAcentos(emailDominio)}`;
-  } else {
-    emailFinal = `${removerAcentos(primeiroNome)}${removerAcentos(
-      ultimaLetraUltimoNome
-    )}@${removerAcentos(emailDominio)}`;
-  }
-
-  let senha = `${
-    prefixo !== "Nenhum" ? prefixo.toLowerCase().replace(".", "") : ""
-  }${removerAcentos(primeiroNome)}${removerAcentos(
-    ultimaLetraUltimoNome
-  )}`.toLowerCase();
-
-  // Adiciona o login ao array listaUsuarios
-  listaUsuarios.push({
-    Usuário: nomeFormatado,
-    Especialização: especializacaoFormatada,
-    Senha: senha,
-    Email: emailFinal,
-  });
-
-  // Adiciona a operação ao histórico de adições
-  historicoAdicoes.push(listaUsuarios.length - 1);
-}
 
 // =============================
 // Eventos de Documentos e Elementos
