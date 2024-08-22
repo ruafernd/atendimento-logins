@@ -476,8 +476,14 @@ const unidadesEmails = [
   },
   {
    unidade: "DIAGNÓSTICA - GERAL2",
-   email: "diagnostica.com",
+   email: "diagnosticajp.com",
    cnpj: "35.589.456/0001-13",
+   servidor: "Geral2"
+  },
+  {
+   unidade: "ORTOTRAUMA - GERAL2",
+   email: "ortotrauma.com",
+   cnpj: "70.133.350/0001-01",
    servidor: "Geral2"
   },
   {
