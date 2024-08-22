@@ -404,7 +404,7 @@ const unidadesEmails = [
   },
   {
     unidade: "UNIMAMA - GERAL",
-    email: "unimama.com",
+    email: "unimamajp.com",
     cnpj: "41.142.571/0002-29",
     servidor: "Geral",
   },
@@ -475,7 +475,7 @@ const unidadesEmails = [
     servidor: "Geral2",
   },
   {
-   unidade: "DIAGNÓSTICA - GERAL2", 
+   unidade: "DIAGNÓSTICA - GERAL2",
    email: "diagnostica.com",
    cnpj: "35.589.456/0001-13",
    servidor: "Geral2"
