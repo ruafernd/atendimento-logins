@@ -495,13 +495,16 @@ body.night-mode label[for="prefixo"] {
   color: white; /* Cor do texto do label "Prefixo:" no modo noturno */
 }
 
+.night-mode .ui-switch {
+  color: white;
+}
 
 /* Contêiner principal do switch */
 .ui-switch {
   width: 39px; /* Largura original */
   height: 20px; /* Altura original */
-  position: relative;
-  display: inline-block;
+  position: rela444tive;
+  display: inl4ine-block;
   text-align: right; /* Alinha o conteúdo à direita */
 }
 
@@ -514,6 +517,7 @@ body.night-mode label[for="prefixo"] {
   right: 8px; /* Move o ícone mais para a esquerda */
   top: 8px; /* Move o ícone mais para baixo */
 }
+
 
 /* Ajuste do SVG para se adequar ao contêiner */
 .st-sunMoonThemeToggleBtn svg {
