@@ -495,75 +495,98 @@ body.night-mode label[for="prefixo"] {
   color: white; /* Cor do texto do label "Prefixo:" no modo noturno */
 }
 
+
+/* Contêiner principal do switch */
 .ui-switch {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  left: 310px;
-  padding-right: 20px;
-  --switch-bg: rgb(135, 150, 165);
-  --switch-width: 43px !important;
-  --switch-height: 20px;
-  --circle-diameter: 27px;
-  --circle-bg: rgb(0, 56, 146);
-  --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
-}
-
-.ui-switch input {
-  display: none;
-}
-
-.slider {
-  width: 39px; /* Ajusta a largura do slider */
-  height: 20px; /* Ajusta a altura do slider */
-  background: var(--switch-bg); /* Mantém o background conforme necessário */
-  border-radius: 999px; /* Garante que o slider seja arredondado */
+  width: 39px; /* Largura original */
+  height: 20px; /* Altura original */
   position: relative;
-  cursor: pointer;
+  display: inline-block;
 }
 
-.slider .circle {
-  top: calc(var(--circle-inset) * -1);
-  left: 0;
-  width: var(--circle-diameter);
-  height: var(--circle-diameter);
-  position: absolute;
-  background: var(--circle-bg);
-  border-radius: inherit;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTQuMiAyLjVsLS43IDEuOC0xLjguNyAxLjguNy43IDEuOC42LTEuOEw2LjcgNWwtMS45LS43LS42LTEuOHptMTUgOC4zYTYuNyA2LjcgMCAxMS02LjYtNi42IDUuOCA1LjggMCAwMDYuNiA2LjZ6IiAvPgo8L3N2Zz4=");
-  background-repeat: no-repeat;
-  background-position: center center;
-  transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+/* Botão personalizado para alternância de temas */
+.st-sunMoonThemeToggleBtn {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  justify-content: right;
 }
 
-.slider .circle::before {
-  content: "";
+/* Ajuste do SVG para se adequar ao contêiner */
+.st-sunMoonThemeToggleBtn svg {
+  width: 18px; /* Dimensões menores para o SVG */
+  height: 18px;
+  transition: transform 0.4s ease;
+  transform: rotate(40deg);
+}
+
+/* Tornar o input invisível, mas mantendo o mesmo tamanho */
+.st-sunMoonThemeToggleBtn .themeToggleInput {
+  opacity: 0;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.75);
-  border-radius: inherit;
-  transition: all 500ms;
-  opacity: 0;
 }
 
-.ui-switch input:checked + .slider .circle {
-  left: calc(100% - var(--circle-diameter));
-  background-color: #000000;
-  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTkuMzA1IDEuNjY3VjMuNzVoMS4zODlWMS42NjdoLTEuMzl6bS00LjcwNyAxLjk1bC0uOTgyLjk4Mkw1LjA5IDYuMDcybC45ODItLjk4Mi0xLjQ3My0xLjQ3M3ptMTAuODAyIDBMMTMuOTI3IDUuMDlsLjk4Mi45ODIgMS40NzMtMS40NzMtLjk4Mi0uOTgyek0xMCA1LjEzOWE0Ljg3MiA0Ljg3MiAwIDAwLTQuODYyIDQuODZBNC44NzIgNC44NzIgMCAwMDEwIDE0Ljg2MiA0Ljg3MiA0Ljg3MiAwIDAwMTQuODYgMTAgNC44NzIgNC44NzIgMCAwMDEwIDUuMTM5em0wIDEuMzg5QTMuNDYyIDMuNDYyIDAgMDExMy40NzEgMTBhMy40NjIgMy40NjIgMCAwMS0zLjQ3MyAzLjQ3MkEzLjQ2MiAzLjQ2MiAwIDAxNi41MjcgMTAgMy40NjIgMy40NjIgMCAwMTEwIDYuNTI4ek0xLjY2NSA5LjMwNXYxLjM5aDIuMDgzdi0xLjM5SDEuNjY2em0xNC41ODMgMHYxLjM5aDIuMDg0di0xLjM5aC0yLjA4NHpNNS4wOSAxMy45MjhMMy42MTYgMTUuNGwuOTgyLjk4MiAxLjQ3My0xLjQ3My0uOTgyLS45ODJ6bTkuODIgMGwtLjk4Mi45ODIgMS40NzMgMS40NzMuOTgyLS45ODItMS40NzMtMS40NzN6TTkuMzA1IDE2LjI1djIuMDgzaDEuMzg5VjE2LjI1aC0xLjM5eiIgLz4KPC9zdmc+");
+/* Estilos para as animações do SVG */
+.st-sunMoonThemeToggleBtn svg .sunMoon {
+  transform-origin: center center;
+  transition: inherit;
+  transform: scale(1);
 }
 
-.ui-switch input:active + .slider .circle::before {
-  transition: 0s;
-  opacity: 1;
-  width: 0;
-  height: 0;
+.st-sunMoonThemeToggleBtn svg .sunRay {
+  transform-origin: center center;
+  transform: scale(0);
+}
+
+.st-sunMoonThemeToggleBtn svg mask > circle {
+  transition: transform 0.64s cubic-bezier(0.41, 0.64, 0.32, 1.575);
+  transform: translate(0px, 0px);
+}
+
+/* Animações com atraso */
+.st-sunMoonThemeToggleBtn svg .sunRay2 {
+  animation-delay: 0.05s !important;
+}
+.st-sunMoonThemeToggleBtn svg .sunRay3 {
+  animation-delay: 0.1s !important;
+}
+.st-sunMoonThemeToggleBtn svg .sunRay4 {
+  animation-delay: 0.17s !important;
+}
+.st-sunMoonThemeToggleBtn svg .sunRay5 {
+  animation-delay: 0.25s !important;
+}
+.st-sunMoonThemeToggleBtn svg .sunRay6 {
+  animation-delay: 0.29s !important;
+}
+
+/* Transformações ao alternar o tema */
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg {
+  transform: rotate(90deg);
+}
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg mask > circle {
+  transform: translate(16px, -3px);
+}
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunMoon {
+  transform: scale(0.55);
+}
+.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunRay {
+  animation: showRay1832 0.4s ease 0s 1 forwards;
+}
+
+/* Keyframes para animação */
+@keyframes showRay1832 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 body input[type="text"],
