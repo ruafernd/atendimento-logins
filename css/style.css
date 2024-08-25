@@ -100,6 +100,7 @@ body.night-mode .refresh-icon {
   margin-top: 10px;
 }
 
+
 .input-field.no-label i.material-icons {
   position: absolute;
   left: 0px;
@@ -173,9 +174,25 @@ select:focus,
 #unidadeInput:focus,
 #email:focus,
 #usuario:focus,
-#material-icons:focus {
+#input.input-field.no-label i.material-icons
+ {
   border-bottom-color: #1d83e0;
+  transition: border-bottom-color 0.53s ease, box-shadow 0.5s ease;
 }
+
+/* Estilo para icones focados */
+.input-field.no-label:focus-within i.material-icons {
+  color: #1d83e0 !important;
+  transition: border-bottom-color 0.53s ease, box-shadow 0.5s ease;
+}
+
+
+/* Estilo para icones focados modo noturno */
+body.night-mode .input-field.no-label:focus-within i.material-icons {
+  color: #000000 !important;
+}
+
+
 
 /*Estilo para lista de unidades*/
 .sugestao {
@@ -291,14 +308,7 @@ body.night-mode .modal-content {
   position: relative;
 }
 
-.input-container i.material-icons {
-  position: absolute;
-  top: 37%;
-  left: 25px;
-  transform: translateY(-50%);
-  font-size: 20px; /* ajusta o tamanho do ícone */
-  color: #888;
-}
+
 
 .input-container input {
   padding-left: 30px;
@@ -452,15 +462,18 @@ body.night-mode .light-logo {
   outline: none;
 }
 
+body.night-mode
+
 /* Estilo para input focado no modo noturno */
 body.night-mode input[type="text"]:focus,
 body.night-mode select:focus,
 body.night-mode #unidadeInput:focus,
 body.night-mode #email:focus,
-body.night-mode #usuario:focus {
-  border-bottom-color: #ffffff; /* Cor branca da borda inferior focada */
-  box-shadow: 0 0px 0 0 #ffffff; /* Sombra branca simulando a onda */
-  transition: border-bottom-color 0.5s ease, box-shadow 0.5s ease; /* Transições suaves */
+body.night-mode #usuario:focus
+{
+  border-bottom-color: #ffffff;
+  box-shadow: 0 0px 0 0 #ffffff;
+  transition: border-bottom-color 0.53s ease, box-shadow 0.5s ease;
 }
 
 body.night-mode input[type="text"]::placeholder,
