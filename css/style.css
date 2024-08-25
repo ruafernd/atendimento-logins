@@ -471,7 +471,7 @@ body.night-mode #unidadeInput:focus,
 body.night-mode #email:focus,
 body.night-mode #usuario:focus
 {
-  border-bottom-color: #ffffff;
+  border-bottom-color: #000000;
   box-shadow: 0 0px 0 0 #ffffff;
   transition: border-bottom-color 0.53s ease, box-shadow 0.5s ease;
 }
