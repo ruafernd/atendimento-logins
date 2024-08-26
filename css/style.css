@@ -106,6 +106,7 @@ body.night-mode .refresh-icon {
   left: 0px;
   top: 37%;
   font-size: 22px;
+  user-select: none;
   transform: translateY(-50%);
   color: rgb(119, 119, 119);
 }
@@ -174,7 +175,7 @@ select:focus,
 #unidadeInput:focus,
 #email:focus,
 #usuario:focus,
-#input.input-field.no-label i.material-icons
+#input-field
  {
   border-bottom-color: #1d83e0;
   transition: border-bottom-color 0.53s ease, box-shadow 0.5s ease;
@@ -334,6 +335,7 @@ body.night-mode .modal-content {
 /* Botão de copiar*/
 .copy-icon {
   margin-left: 5px;
+  user-select: none;
   cursor: pointer;
 }
 
