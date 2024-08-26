@@ -310,10 +310,10 @@ body.night-mode .modal-content {
 
 .input-container .material-icons {
   position: absolute;
-  left: 10px; /* Ajusta a posição horizontal do ícone */
-  top: 50%;
+  left: 33px; /* Ajusta a posição horizontal do ícone */
+  top: 35%;
   transform: translateY(-50%); /* Centraliza verticalmente o ícone dentro do input */
-  color: black;
+  color: #636262;
 }
 
 .input-container input {
