@@ -303,18 +303,23 @@ body.night-mode .modal-content {
   border: 1px solid #555;
 }
 
-/*Css do modal de edição de login*/
 .input-container {
   margin-bottom: 10px;
   position: relative;
 }
 
-
+.input-container .material-icons {
+  position: absolute;
+  left: 10px; /* Ajusta a posição horizontal do ícone */
+  top: 50%;
+  transform: translateY(-50%); /* Centraliza verticalmente o ícone dentro do input */
+  color: black;
+}
 
 .input-container input {
-  padding-left: 30px;
-  width: calc(100% - 40px);
-  font-size: 16px; /* ajusta o tamanho do texto */
+  padding-left: 40px; /* Espaço suficiente para o ícone e o texto do input */
+  width: calc(100% - 50px); /* Considera o espaço ocupado pelo padding */
+  font-size: 16px; /* Ajusta o tamanho do texto */
 }
 
 /* Botão de fechar do modal de edição de login */
