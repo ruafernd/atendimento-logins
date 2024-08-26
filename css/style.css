@@ -352,6 +352,7 @@ button {
   padding: 10px 20px;
   border-radius: 8px;
   margin: 5px;
+  user-select: none;
   cursor: pointer;
   display: block;
   width: 150px;
