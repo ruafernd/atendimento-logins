@@ -1054,6 +1054,12 @@ const unidadesEmails = [
     servidor: "SP3",
   },
   {
+   unidade: "AMOR SAÚDE HORTOLÂNDIA - SP3",
+   email: "amshortolandia.com",
+   cnpj: "19.459.195/0001-60",
+   servidor: "SP3"
+  },
+  {
     unidade: "AMOR SAUDE OSASCO CENTRO - SP3",
     email: "asosascocentro.com",
     cnpj: "24.857.834/0001-86",
