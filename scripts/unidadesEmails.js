@@ -583,7 +583,7 @@ const unidadesEmails = [
     servidor: "Geral2",
   },
   {
-    unidade: "CLINICA CIRURGICA EDUARDO PACHU - GERAL2",
+    unidade: "INSTITUTO PACHU - GERAL2",
     email: "clinicacirurgica.com",
     cnpj: "27.168.784/0001-18",
     servidor: "Geral2",
