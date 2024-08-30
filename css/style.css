@@ -364,6 +364,17 @@ body.night-mode .modal-content {
     border-bottom-color 0.5s ease;
 }
 
+.modal button, .modal-content button{
+  color: aliceblue;
+  border: none;
+  border-radius: 7px;
+  background-color: #1d83e0;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+
 .action-buttons{
   padding: 12px;
 }
