@@ -498,6 +498,30 @@ saveEditButton.addEventListener("click", function () {
   }
 });
 
+
+function exportUnidadesToXLSX() {
+  const ws = XLSX.utils.json_to_sheet(unidadesEmails);
+
+  // Ajustar o cabeçalho para a primeira letra maiúscula
+  const headers = Object.keys(unidadesEmails[0]).map(header => header.charAt(0).toUpperCase() + header.slice(1));
+  XLSX.utils.sheet_add_aoa(ws, [headers], { origin: "A1" });
+
+  // Autoajustar as colunas
+  const maxLengths = headers.map((header, index) => {
+    return Math.max(
+      ...unidadesEmails.map(unit => unit[header.toLowerCase()].length),
+      header.length
+    );
+  });
+
+  ws["!cols"] = maxLengths.map(len => ({ wch: len }));
+
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Unidades");
+
+  XLSX.writeFile(wb, "unidades.xlsx");
+}
+
 // Fecha o modal ao clicar no x
 span.onclick = function () {
   modal.style.display = "none";
@@ -734,6 +758,14 @@ document.addEventListener("keydown", function (event) {
   if (event.ctrlKey && event.key === ".") {
     event.preventDefault();
     exportLoginsToCSV();
+  }
+});
+
+// Evento de teclado para exportar as Unidades para CSV
+document.addEventListener("keydown", function (event) {
+  if (event.ctrlKey && event.key === ",") {
+    event.preventDefault();
+    exportUnidadesToXLSX();
   }
 });
 
