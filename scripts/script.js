@@ -162,9 +162,12 @@ function atualizarSugestoesUnidade() {
     });
     sugestoes.appendChild(sugestao);
   });
-
-  sugestoes.style.display = sugestoes.childNodes.length > 0 ? "block" : "none"; // Exibe ou oculta as sugestões conforme necessário
 }
+
+function removerAcentos(texto) {
+  return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, ""); // Normaliza o texto e remove diacríticos
+}
+
 
 
 // =============================
