@@ -284,7 +284,7 @@ function atualizarListaLogins() {
     if (unidadeInfo && unidadeInfo.servidor) {
       let servidorInfo = document.createElement("div");
       servidorInfo.classList.add("servidor-info");
-      servidorInfo.textContent = "Bom dia Edwin safadinho " + unidadeInfo.servidor;
+      servidorInfo.textContent = "Servidor " + unidadeInfo.servidor;
       servidorInfo.style.textAlign = "center";
       servidorInfo.style.color = "black";
       servidorInfo.style.fontSize = "11px";
