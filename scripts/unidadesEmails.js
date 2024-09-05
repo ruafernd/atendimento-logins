@@ -1042,6 +1042,12 @@ const unidadesEmails = [
    servidor: "SP3"
   },
   {
+   unidade: "AMOR SAÚDE BRAGANÇA - SP3",
+   email: "amsbraganca.com",
+   cnpj: "28.807.237/0001-06",
+   servidor: "SP3"
+  },
+  {
    unidade: "AMOR SAUDE ARARAS - SP3",
    email: "amorsaudeararas.com",
    cnpj: "32.283.114/0001-82",
