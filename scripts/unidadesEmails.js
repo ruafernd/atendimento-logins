@@ -1132,6 +1132,12 @@ const unidadesEmails = [
     servidor: "Sul",
   },
   {
+   unidade: "AMOR SAUDE MONTENEGRO - SUL",
+   email: "amsmontenegro.com",
+   cnpj: "54.868.594/0001-86",
+   servidor: "Sul",
+  },
+  {
     unidade: "AMOR SAUDE SAO LEOPOLDO - SUL",
     email: "amssaoleopoldo.com",
     cnpj: "26.131.229/0001-59",
