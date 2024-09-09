@@ -475,16 +475,16 @@ const unidadesEmails = [
     servidor: "Geral2",
   },
   {
-   unidade: "DIAGNÓSTICA - GERAL2",
-   email: "diagnosticajp.com",
-   cnpj: "35.589.456/0001-13",
-   servidor: "Geral2"
+    unidade: "DIAGNÓSTICA - GERAL2",
+    email: "diagnosticajp.com",
+    cnpj: "35.589.456/0001-13",
+    servidor: "Geral2",
   },
   {
-   unidade: "ORTOTRAUMA - GERAL2",
-   email: "ortotrauma.com",
-   cnpj: "70.133.350/0001-01",
-   servidor: "Geral2"
+    unidade: "ORTOTRAUMA - GERAL2",
+    email: "ortotrauma.com",
+    cnpj: "70.133.350/0001-01",
+    servidor: "Geral2",
   },
   {
     unidade: "CLINICA TOP - GERAL2",
@@ -619,10 +619,10 @@ const unidadesEmails = [
     servidor: "SP",
   },
   {
-   unidade: "AMOR SAUDE GUARUJA - SP",
-   email: "asguaruja.com",
-   cnpj: "44.057.955/0001-50",
-   servidor: "SP"
+    unidade: "AMOR SAUDE GUARUJA - SP",
+    email: "asguaruja.com",
+    cnpj: "44.057.955/0001-50",
+    servidor: "SP",
   },
   {
     unidade: "AMOR SAUDE ARACATUBA - SP",
@@ -1036,22 +1036,22 @@ const unidadesEmails = [
     servidor: "SP3",
   },
   {
-   unidade: "AMOR SAUDE TAUBATE - SP3",
-   email: "amstaubate.com",
-   cnpj: "11.726.986/0001-06",
-   servidor: "SP3"
+    unidade: "AMOR SAUDE TAUBATE - SP3",
+    email: "amstaubate.com",
+    cnpj: "11.726.986/0001-06",
+    servidor: "SP3",
   },
   {
-   unidade: "AMOR SAÚDE BRAGANÇA - SP3",
-   email: "amsbraganca.com",
-   cnpj: "28.807.237/0001-06",
-   servidor: "SP3"
+    unidade: "AMOR SAÚDE BRAGANÇA - SP3",
+    email: "amsbraganca.com",
+    cnpj: "28.807.237/0001-06",
+    servidor: "SP3",
   },
   {
-   unidade: "AMOR SAUDE ARARAS - SP3",
-   email: "amorsaudeararas.com",
-   cnpj: "32.283.114/0001-82",
-   servidor: "SP3"
+    unidade: "AMOR SAUDE ARARAS - SP3",
+    email: "amorsaudeararas.com",
+    cnpj: "32.283.114/0001-82",
+    servidor: "SP3",
   },
   {
     unidade: "AMOR SAUDE FERRAZ DE VASCONCELOS - SP3",
@@ -1060,10 +1060,16 @@ const unidadesEmails = [
     servidor: "SP3",
   },
   {
-   unidade: "AMOR SAÚDE HORTOLÂNDIA - SP3",
-   email: "amshortolandia.com",
-   cnpj: "19.459.195/0001-60",
-   servidor: "SP3"
+    unidade: "AMOR SAÚDE HORTOLÂNDIA - SP3",
+    email: "amshortolandia.com",
+    cnpj: "19.459.195/0001-60",
+    servidor: "SP3",
+  },
+  {
+  unidade: "AMOR SAUDE VILA CAIÇARA - SP",
+  email: "asvilacaicara.com",
+  cnpj: "55.825.900/0001-60",
+  servidor: "SP3",
   },
   {
     unidade: "AMOR SAUDE OSASCO CENTRO - SP3",
@@ -1132,10 +1138,10 @@ const unidadesEmails = [
     servidor: "Sul",
   },
   {
-   unidade: "AMOR SAUDE MONTENEGRO - SUL",
-   email: "amsmontenegro.com",
-   cnpj: "54.868.594/0001-86",
-   servidor: "Sul",
+    unidade: "AMOR SAUDE MONTENEGRO - SUL",
+    email: "amsmontenegro.com",
+    cnpj: "54.868.594/0001-86",
+    servidor: "Sul",
   },
   {
     unidade: "AMOR SAUDE SAO LEOPOLDO - SUL",
@@ -1990,10 +1996,10 @@ const unidadesEmails = [
     servidor: "Norte",
   },
   {
-   unidade: "APOIO AMOR SAUDE BELEM BENGUI - NORTE",
-   email: "apoiobelem.com",
-   cnpj: "51.980.945/0001-58",
-   servidor: "Norte"
+    unidade: "APOIO AMOR SAUDE BELEM BENGUI - NORTE",
+    email: "apoiobelem.com",
+    cnpj: "51.980.945/0001-58",
+    servidor: "Norte",
   },
   {
     unidade: "CARTAO DE TODOS PIRITUBA / PERUS - NORTE",
@@ -2008,10 +2014,10 @@ const unidadesEmails = [
     servidor: "Norte",
   },
   {
-   unidade: "CARTÃO DE TODOS PAULISTA - NORTE",
-   email: "ctpaulista.com",
-   cnpj: "31.031.513/0001-93",
-   servidor: "Norte",
+    unidade: "CARTÃO DE TODOS PAULISTA - NORTE",
+    email: "ctpaulista.com",
+    cnpj: "31.031.513/0001-93",
+    servidor: "Norte",
   },
   {
     unidade: "CARTAO DE TODOS ERMELINO MATARAZZO - NORTE",
