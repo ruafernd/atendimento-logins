@@ -505,6 +505,12 @@ const unidadesEmails = [
     servidor: "Geral2",
   },
   {
+    unidade: "CENTRO DE DIAGNOSTICO PIRAPORINHA - GERAL2",
+    email: "diagnosticopiraporinha.com",
+    cnpj: "44.127.794/0001-24",
+    servidor: "Geral2"
+   },
+  {
     unidade: "PULSE VIDA SAUDE - GERAL2",
     email: "pulsevida.com",
     cnpj: "53.107.316/0001-43",
