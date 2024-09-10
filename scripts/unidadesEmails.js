@@ -1096,11 +1096,23 @@ const unidadesEmails = [
     servidor: "SP3",
   },
   {
+    unidade: "AMOR SAUDE PARELHEIROS - SP3",
+    email: "@amsparelheiros.com",
+    cnpj: "56.421.441/0001-11",
+    servidor: "SP3"
+   },
+  {
     unidade: "AMOR SAUDE SAO MIGUEL - SP3",
     email: "amorsaudesaomiguel.com",
     cnpj: "17.531.735/0001-44",
     servidor: "SP3",
   },
+  {
+    unidade: "AMOR SAUDE PARELHEIROS - SP3",
+    email: "@amsparelheiros.com",
+    cnpj: "56.421.441/0001-11",
+    servidor: "SP3"
+   },
   {
     unidade: "AMOR SAUDE TUCURUVI - SP3",
     email: "amorsaudetucuruvi.com.br",
