@@ -589,6 +589,12 @@ const unidadesEmails = [
     servidor: "Geral2",
   },
   {
+   unidade: "BIOFACE - GERAL2",
+   email: "bioface.com",
+   cnpj: "14.830.104/0001-38",
+   servidor: "Geral2"
+  },
+  {
     unidade: "INSTITUTO PACHU - GERAL2",
     email: "clinicacirurgica.com",
     cnpj: "27.168.784/0001-18",
