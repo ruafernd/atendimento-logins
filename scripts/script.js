@@ -456,7 +456,7 @@ function editarLogin(index) {
 // Função para exportar os logins para CSV e ajustar o tamanho das colunas
 function exportLoginsToCSV() {
   const logins = listaUsuarios;
-  let csvContent = [["Usuário", "Email", "Senha", "Especialização", "Contato"]];
+  let csvContent = [["Usuário", "Email", "Senha", "Especialização"]];
 
   logins.forEach((login) => {
     csvContent.push([
@@ -468,6 +468,10 @@ function exportLoginsToCSV() {
     ]);
   });
 
+    if (listaUsuarios.length === 0) {
+      alert("Adicione um usuário primeiro.");
+      return;
+    }
   // Criar uma nova planilha
   const ws = XLSX.utils.aoa_to_sheet(csvContent);
   const wsCols = [
@@ -475,8 +479,6 @@ function exportLoginsToCSV() {
     { wch: Math.max(...csvContent.map((row) => row[1].length)) }, // Email
     { wch: Math.max(...csvContent.map((row) => row[2].length)) }, // Senha
     { wch: Math.max(...csvContent.map((row) => row[3].length)) }, // Especialização
-    { wch: Math.max(...csvContent.map((row) => row[4].length)) }, // Contato
-
   ];
   ws["!cols"] = wsCols;
 
