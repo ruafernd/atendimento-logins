@@ -565,6 +565,12 @@ const unidadesEmails = [
     servidor: "Geral2",
   },
   {
+   unidade: "HNL CONVÊNIOS - GERAL2",
+   email: "hnlconvenios.com",
+   cnpj: "09.112.236/0001-94",
+   servidor: "Geral2"
+  },
+  {
     unidade: "HNL URGENCIA - GERAL2",
     email: "hnlurg.com",
     cnpj: "09.112.236/0001-94",
