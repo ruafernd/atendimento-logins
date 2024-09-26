@@ -965,7 +965,7 @@ const unidadesEmails = [
     unidade: "AMOR SAUDE PIMENTAS - SP2",
     email: "ascumbica.com",
     cnpj: "14.650.152/0002-25",
-    cnpj2: "14.50.152/0002-25",
+    contato: "14.50.152/0002-25",
     servidor: "SP2",
   },
   {
@@ -1058,6 +1058,7 @@ const unidadesEmails = [
     email: "amstaubate.com",
     cnpj: "11.726.986/0001-06",
     servidor: "SP3",
+    contato: "5512992187212"
   },
   {
     unidade: "AMOR SAÚDE BRAGANÇA - SP3",
@@ -1124,6 +1125,7 @@ const unidadesEmails = [
     email: "asamericana.com",
     cnpj: "09.377.220/0001-03",
     servidor: "SP3",
+    contato: "5519991587923",
   },
   {
     unidade: "AMOR SAUDE PERUS - SP (FILIAL) - SP3",
@@ -1184,6 +1186,7 @@ const unidadesEmails = [
     email: "amssaoleopoldo.com",
     cnpj: "26.131.229/0001-59",
     servidor: "Sul",
+    contato: "555193620833"
   },
   {
     unidade: "AMOR SAUDE FOZ - SUL",

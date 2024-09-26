@@ -138,14 +138,14 @@ function atualizarSugestoesUnidade() {
       const unidadeMinuscula = removerAcentos(item.unidade.toLowerCase());
       const emailMinusculo = removerAcentos(item.email.toLowerCase());
       const cnpjFormatado = item.cnpj ? item.cnpj.replace(/[./]/g, "") : ""; // Remove apenas os caracteres . e / do CNPJ para comparação
-      const cnpj2Formatado = item.cnpj2 ? item.cnpj2.replace(/[./]/g, "") : "";
+      const contatoFormatado = item.contato ? item.contato.replace(/[./]/g, "") : "";
 
       // Verifica se o texto digitado está contido no nome da unidade, no email ou no CNPJ
       return (
         unidadeMinuscula.includes(textoInput) ||
         emailMinusculo.includes(textoInput) ||
         cnpjFormatado.includes(textoInput.replace(/[./]/g, "")) ||
-        cnpj2Formatado.includes(textoInput.replace(/[./]/g, ""))
+        contatoFormatado.includes(textoInput.replace(/[./]/g, ""))
       );
     })
     .sort((a, b) => a.unidade.localeCompare(b.unidade)); // Ordena em ordem alfabética
@@ -456,7 +456,7 @@ function editarLogin(index) {
 // Função para exportar os logins para CSV e ajustar o tamanho das colunas
 function exportLoginsToCSV() {
   const logins = listaUsuarios;
-  let csvContent = [["Usuário", "Email", "Senha", "Especialização"]];
+  let csvContent = [["Usuário", "Email", "Senha", "Especialização", "Contato"]];
 
   logins.forEach((login) => {
     csvContent.push([
@@ -464,6 +464,7 @@ function exportLoginsToCSV() {
       login.Email,
       login.Senha,
       login.Especialização,
+      login.Contato,
     ]);
   });
 
@@ -474,6 +475,8 @@ function exportLoginsToCSV() {
     { wch: Math.max(...csvContent.map((row) => row[1].length)) }, // Email
     { wch: Math.max(...csvContent.map((row) => row[2].length)) }, // Senha
     { wch: Math.max(...csvContent.map((row) => row[3].length)) }, // Especialização
+    { wch: Math.max(...csvContent.map((row) => row[4].length)) }, // Contato
+
   ];
   ws["!cols"] = wsCols;
 
