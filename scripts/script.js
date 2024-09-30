@@ -138,14 +138,14 @@ function atualizarSugestoesUnidade() {
       const unidadeMinuscula = removerAcentos(item.unidade.toLowerCase());
       const emailMinusculo = removerAcentos(item.email.toLowerCase());
       const cnpjFormatado = item.cnpj ? item.cnpj.replace(/[./]/g, "") : ""; // Remove apenas os caracteres . e / do CNPJ para comparação
-      const cnpj2Formatado = item.cnpj2 ? item.cnpj2.replace(/[./]/g, "") : "";
+      const contatoFormatado = item.contato ? item.contato.replace(/[./]/g, "") : "";
 
       // Verifica se o texto digitado está contido no nome da unidade, no email ou no CNPJ
       return (
         unidadeMinuscula.includes(textoInput) ||
         emailMinusculo.includes(textoInput) ||
         cnpjFormatado.includes(textoInput.replace(/[./]/g, "")) ||
-        cnpj2Formatado.includes(textoInput.replace(/[./]/g, ""))
+        contatoFormatado.includes(textoInput.replace(/[./]/g, ""))
       );
     })
     .sort((a, b) => a.unidade.localeCompare(b.unidade)); // Ordena em ordem alfabética
@@ -464,9 +464,14 @@ function exportLoginsToCSV() {
       login.Email,
       login.Senha,
       login.Especialização,
+      login.Contato,
     ]);
   });
 
+    if (listaUsuarios.length === 0) {
+      alert("Adicione um usuário primeiro.");
+      return;
+    }
   // Criar uma nova planilha
   const ws = XLSX.utils.aoa_to_sheet(csvContent);
   const wsCols = [
