@@ -2467,6 +2467,12 @@ const unidadesEmails = [
     servidor: "BA",
   },
   {
+    unidade: "AMOR SAÚDE CAJAZEIRAS - BA",
+    email: "amscajazeiras.com",
+    cnpj: "56.153.373/0001-57",
+    servidor: "BA",
+  },
+  {
     unidade: "AMOR SAUDE SALVADOR - BA",
     email: "amorsaudesalvador.com",
     cnpj: "33.300.825/0001-80",
