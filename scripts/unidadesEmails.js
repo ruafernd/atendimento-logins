@@ -1447,6 +1447,12 @@ const unidadesEmails = [
     servidor: "RJ",
   },
   {
+   unidade: "AMOR SAUDE RIO DAS OSTRAS - RJ",
+   email: "asriodasostras.com",
+   cnpj: "21.664.753/0001-71",
+   servidor: "RJ",
+  },
+  {
     unidade: "AMOR SAUDE MADUREIRA - RJ",
     email: "amorsaudemadureira.com",
     cnpj: "32.567.970/0001-60",
@@ -1733,6 +1739,12 @@ const unidadesEmails = [
     email: "amstrescoracoes.com",
     cnpj: "50.580.065/0001-21",
     servidor: "MG",
+  },
+  {
+   unidade: "AMOR SAUDE BARBACENA - MG",
+   email: "amsbarbacena.com",
+   cnpj: "37.762.806/0001-27",
+   servidor: "MG",
   },
   {
     unidade: "AMOR SAUDE VARGINHA - MG",
