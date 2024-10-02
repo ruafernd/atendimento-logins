@@ -1909,6 +1909,12 @@ const unidadesEmails = [
     servidor: "Norte",
   },
   {
+   unidade: "AMOR SAUDE PARAGOMINAS - NORTE",
+   email: "amsparagominas.com",
+   cnpj: "50.839.024/0001-07",
+   servidor: "Norte",
+  },
+  {
     unidade: "AMOR SAUDE ABAETETUBA - NORTE",
     email: "asabaetetuba.com",
     cnpj: "36.638.356/0001-85",
@@ -2898,6 +2904,7 @@ const unidadesEmails = [
     cnpj: "29.848.760/0001-35",
     servidor: "Centro-Oeste",
   },
+
   {
     unidade: "AMOR SAUDE SANTA MARIA - CO",
     email: "assantamaria.com",
