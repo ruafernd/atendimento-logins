@@ -550,11 +550,21 @@ function exportLoginsToCSV() {
 }
 
 // Salvar alterações e atualizar a lista
+const editEmailInput = document.getElementById("editEmail");
+const editSenhaInput = document.getElementById("editSenha");
+
+editEmailInput.addEventListener("input", function () {
+  const email = editEmailInput.value.trim();
+  const senha = email.split('@')[0]; // Tudo que vem antes do '@'
+
+  editSenhaInput.value = senha;
+});
+
 saveEditButton.addEventListener("click", function () {
   if (editIndex !== -1) {
     const usuario = document.getElementById("editUsuario").value.trim();
-    const email = document.getElementById("editEmail").value.trim();
-    const senha = document.getElementById("editSenha").value.trim();
+    const email = editEmailInput.value.trim();
+    const senha = email.split('@')[0];
 
     listaUsuarios[editIndex]["Usuário"] = usuario;
     listaUsuarios[editIndex]["Email"] = email;
@@ -564,6 +574,7 @@ saveEditButton.addEventListener("click", function () {
     modal.style.display = "none";
   }
 });
+
 
 
 function exportUnidadesToXLSX() {
