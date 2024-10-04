@@ -290,27 +290,29 @@ function atualizarListaLogins() {
       servidorInfo.style.fontSize = "11px";
       servidorInfo.style.paddingTop = "0px";
       servidorInfo.style.paddingBottom = "0px";
-      servidorInfo.style.position = "relative"; // Necessário para posicionar o ícone
-      servidorInfo.style.display = "flex"; // Usar flexbox
-      servidorInfo.style.alignItems = "center"; // Centraliza verticalmente
-      servidorInfo.style.width = "100%"; // Para garantir que ocupe toda a largura
+      servidorInfo.style.position = "relative";
+      servidorInfo.style.display = "flex";
+      servidorInfo.style.alignItems = "center";
+      servidorInfo.style.width = "100%";
 
       // Criar um contêiner para ícone de usuário e contagem
       let userContainer = document.createElement("div");
-      userContainer.style.display = "flex"; // Alinhamento em linha
-      userContainer.style.alignItems = "center"; // Centraliza verticalmente
+      userContainer.style.display = "flex";
+      userContainer.style.alignItems = "center";
 
       // Criar ícone de usuário
       let userIcon = document.createElement("span");
       userIcon.classList.add("material-icons");
-      userIcon.textContent = "person"; // Ícone de usuário
-      userIcon.style.fontSize = "13px"; // Tamanho do ícone
-      userIcon.style.marginRight = "2px"; // Margem para espaçamento
+      userIcon.textContent = "person";
+      userIcon.style.fontSize = "13px";
+      userIcon.style.marginRight = "2px";
+      userIcon.title = "Número de usuários";
 
       // Adicionar a contagem de usuários
       let userCount = document.createElement("span");
-      userCount.textContent = `${listaUsuarios.length}`; // Exibe apenas o número de usuários
-      userCount.style.marginRight = "5px"; // Adiciona um espaço à direita
+      userCount.textContent = `${listaUsuarios.length}`;
+      userCount.style.marginRight = "5px";
+
 
       // Adicionar ícone e contagem ao contêiner de usuários
       userContainer.appendChild(userIcon);
@@ -318,24 +320,25 @@ function atualizarListaLogins() {
 
       // Criar um contêiner para o texto do servidor
       let serverTextContainer = document.createElement("div");
-      serverTextContainer.style.flexGrow = "1"; // Permite que esse contêiner cresça
-      serverTextContainer.style.textAlign = "center"; // Centraliza o texto
-      serverTextContainer.style.display = "flex"; // Usar flexbox para o texto do servidor
-      serverTextContainer.style.justifyContent = "center"; // Centraliza horizontalmente
-      serverTextContainer.style.marginLeft = "-30px"; // Adiciona margem negativa para mover para a esquerda
-      serverTextContainer.textContent = "Servidor " + unidadeInfo.servidor; // Texto do servidor
+      serverTextContainer.style.flexGrow = "1";
+      serverTextContainer.style.textAlign = "center";
+      serverTextContainer.style.display = "flex";
+      serverTextContainer.style.justifyContent = "center";
+      serverTextContainer.style.marginLeft = "-30px";
+      serverTextContainer.textContent = "Servidor " + unidadeInfo.servidor;
 
       // Criar ícone de download
       let downloadIcon = document.createElement("span");
       downloadIcon.classList.add("material-icons");
       downloadIcon.classList.add("download-icon");
-      downloadIcon.textContent = "file_download"; // Ícone de download do Material Icons
+      downloadIcon.textContent = "file_download";
       downloadIcon.style.cursor = "pointer";
-      downloadIcon.style.fontSize = "16px"; // Definir o tamanho pequeno do ícone
-      downloadIcon.style.position = "absolute"; // Para posicionar à direita
-      downloadIcon.style.right = "0px"; // Colocar à direita
-      downloadIcon.style.top = "0"; // Ajustar o alinhamento superior
+      downloadIcon.style.fontSize = "16px";
+      downloadIcon.style.position = "absolute";
+      downloadIcon.style.right = "0px";
+      downloadIcon.style.top = "0";
       downloadIcon.style.color = "#595c5f";
+      downloadIcon.title = "Exportar lista de logins";
 
       // Adicionar evento de clique no ícone para baixar a lista de logins
       downloadIcon.addEventListener("click", function () {
@@ -343,9 +346,9 @@ function atualizarListaLogins() {
       });
 
       // Adicionar o contêiner de usuários, texto do servidor e ícone de download ao servidorInfo
-      servidorInfo.appendChild(userContainer); // Contêiner à esquerda
-      servidorInfo.appendChild(serverTextContainer); // Texto centralizado
-      servidorInfo.appendChild(downloadIcon); // Ícone de download à direita
+      servidorInfo.appendChild(userContainer);
+      servidorInfo.appendChild(serverTextContainer);
+      servidorInfo.appendChild(downloadIcon);
 
       listaLogins.appendChild(servidorInfo);
     }
