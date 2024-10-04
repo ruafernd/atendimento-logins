@@ -20,17 +20,9 @@ body {
   overflow: hidden;
 }
 
-.night-mode .dark-logo {
-  opacity: 1;
-  position: static;
-  z-index: 1;
-  filter: brightness(0) invert(1);
-}
-
-.dark-logo {
-  opacity: 0;
-  position: absolute;
-  z-index: -1;
+.logoAI_azul {
+  width: 240px;
+  padding-top: 10px;
 }
 
 /** Estilo para o container de login **/
@@ -59,20 +51,9 @@ body {
   font-size: 19px !important;
 }
 
-/* Estilo para o modo noturno do ícone de recarregar */
-body.night-mode .refresh-icon {
-  color: white;
-}
 
 .prefixo-container {
   width: 80%;
-}
-
-/* Icone da barra*/
-.iconcadastro {
-  padding: 10px;
-  padding-left: 17px;
-  width: 230px;
 }
 
 .login-item {
@@ -131,22 +112,10 @@ body.night-mode .refresh-icon {
   z-index: 1;
 }
 
-body.night-mode #sugestoes {
-  background-color: #444;
-  color: white;
-}
-
 /* Efeito de escurecimento quando o mouse estiver sobre o item */
 .sugestao:hover {
   background-color: #e0e0e0; /* Cor de fundo escurecida */
 }
-
-/* Efeito de escurecimento quando o mouse estiver sobre a unidade no modo noturno */
-body.night-mode .sugestao:hover {
-  background-color: #000000;
-}
-
-
 
 /* Estilo para os inputs*/
 input[type="text"],
@@ -186,14 +155,6 @@ select:focus,
   color: #1d83e0 !important;
   transition: border-bottom-color 0.53s ease, box-shadow 0.5s ease;
 }
-
-
-/* Estilo para icones focados modo noturno */
-body.night-mode .input-field.no-label:focus-within i.material-icons {
-  color: #000000 !important;
-}
-
-
 
 /*Estilo para lista de unidades*/
 .sugestao {
@@ -250,10 +211,6 @@ body.night-mode .input-field.no-label:focus-within i.material-icons {
   top: 90px; /* Ajusta a distância do topo */
 }
 
-body.night-mode .modal-content {
-  background-color: #333;
-  color: white;
-}
 
 /* Estilo básico para o modal de múltiplos logins */
 #multiLoginModal {
@@ -291,17 +248,6 @@ body.night-mode .modal-content {
   box-sizing: border-box; /* Inclui padding e bordas no cálculo da largura */
 }
 
-.night-mode #multiLoginModal select {
-  background-color: #444;
-  color: white;
-  border: 1px solid #555;
-}
-
-.night-mode #multiLoginModal textarea {
-  background-color: #444;
-  color: white;
-  border: 1px solid #555;
-}
 
 .input-container {
   margin-bottom: 10px;
@@ -419,233 +365,14 @@ label{
   max-width: 900px;
 }
 
-/* Estilo para o modo noturno */
-body.night-mode .login-list {
-  background-color: #333;
-  color: white;
-}
-
-body.night-mode .login-list .material-icons {
-  color: white !important;
-}
-
-/* Estilo para o modo noturno */
-body.night-mode {
-  background: linear-gradient(90deg, #000000, #2c2c2c);
-  color: white;
-}
-
-body.night-mode .login-container {
-  background-color: #333;
-  color: white;
-}
-
-body.night-mode .servidor-info {
-  color: white !important; /* Garante que a cor branca seja aplicada no modo noturno */
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-body.night-mode .material-icons {
-  color: white;
-}
-
-body.night-mode button {
-  background-color: #000000;
-  color: white;
-}
-
-body.night-mode .light-logo {
-  opacity: 0;
-  position: absolute;
-  z-index: -1;
-}
-
-.light-logo {
-  opacity: 1;
-  position: static;
-  z-index: 1;
-}
-
-/* Estilo para o ícone de alternância */
-.toggle-container {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 10px;
-}
-
-#toggleMode {
-  cursor: pointer;
-  font-size: 24px;
-  color: inherit;
-  background: none;
-  border: none;
-  outline: none;
-}
-
-body.night-mode
-
-/* Estilo para input focado no modo noturno */
-body.night-mode input[type="text"]:focus,
-body.night-mode select:focus,
-body.night-mode #unidadeInput:focus,
-body.night-mode #email:focus,
-body.night-mode #usuario:focus
-{
-  border-bottom-color: #000000;
-  box-shadow: 0 0px 0 0 #ffffff;
-  transition: border-bottom-color 0.53s ease, box-shadow 0.5s ease;
-}
-
-body.night-mode input[type="text"]::placeholder,
-body.night-mode select::placeholder,
-body.night-mode #unidadeInput::placeholder,
-body.night-mode #email::placeholder,
-body.night-mode #usuario::placeholder {
-  color: #ffffff; /* Cor do placeholder */
-}
-
-body.night-mode .material-icons {
-  color: rgb(255, 255, 255) !important; /* Cor dos ícones dentro dos inputs */
-}
-
-/* Estilo para o modo noturno - cor do texto do select */
-body.night-mode #prefixo {
-  color: white; /* Cor do texto do select no modo noturno */
-}
-
-/* Estilo para o modo noturno - cor do texto das opções do select */
-body.night-mode #prefixo option {
-  color: white; /* Cor do texto das opções do select no modo noturno */
-}
-
-/* Estilo para o modo noturno - cor de fundo das opções do select */
-body.night-mode #prefixo option {
-  background-color: #333; /* Cor de fundo das opções do select no modo noturno */
-}
-
-/* Estilo para o modo noturno - cor do texto do label "Prefixo:" */
-body.night-mode label[for="prefixo"] {
-  color: white; /* Cor do texto do label "Prefixo:" no modo noturno */
-}
-
-.night-mode .ui-switch {
-  color: white;
-}
-
-/* Contêiner principal do switch */
-.ui-switch {
-  width: 39px; /* Largura original */
-  height: 20px; /* Altura original */
-  position: rela444tive;
-  display: inl4ine-block;
-  text-align: right; /* Alinha o conteúdo à direita */
-}
-
-/* Botão personalizado para alternância de temas */
-.st-sunMoonThemeToggleBtn {
-  cursor: pointer;
-  width: 18px; /* Limitar a área de clique à largura do SVG */
-  height: 18px; /* Limitar a altura de clique à altura do SVG */
-  position: absolute;
-  right: 8px; /* Move o ícone mais para a esquerda */
-  top: 8px; /* Move o ícone mais para baixo */
-}
-
-
-/* Ajuste do SVG para se adequar ao contêiner */
-.st-sunMoonThemeToggleBtn svg {
-  width: 18px; /* Dimensões menores para o SVG */
-  height: 18px;
-  transition: transform 0.4s ease;
-  transform: rotate(40deg);
-}
-
-/* Tornar o input invisível, mas ajustado ao tamanho do SVG */
-.st-sunMoonThemeToggleBtn .themeToggleInput {
-  opacity: 0;
-  position: absolute;
-  width: 18px; /* Ajustar a largura ao tamanho do SVG */
-  height: 18px; /* Ajustar a altura ao tamanho do SVG */
-  cursor: pointer; /* Certificar que o cursor de clique permanece na área ativa */
-}
-
-/* Estilos para as animações do SVG */
-.st-sunMoonThemeToggleBtn svg .sunMoon {
-  transform-origin: center center;
-  transition: inherit;
-  transform: scale(1);
-}
-
-.st-sunMoonThemeToggleBtn svg .sunRay {
-  transform-origin: center center;
-  transform: scale(0);
-}
-
-.st-sunMoonThemeToggleBtn svg mask > circle {
-  transition: transform 0.64s cubic-bezier(0.41, 0.64, 0.32, 1.575);
-  transform: translate(0px, 0px);
-}
-
-/* Animações com atraso */
-.st-sunMoonThemeToggleBtn svg .sunRay2 {
-  animation-delay: 0.05s !important;
-}
-.st-sunMoonThemeToggleBtn svg .sunRay3 {
-  animation-delay: 0.1s !important;
-}
-.st-sunMoonThemeToggleBtn svg .sunRay4 {
-  animation-delay: 0.17s !important;
-}
-.st-sunMoonThemeToggleBtn svg .sunRay5 {
-  animation-delay: 0.25s !important;
-}
-.st-sunMoonThemeToggleBtn svg .sunRay6 {
-  animation-delay: 0.29s !important;
-}
-
-/* Transformações ao alternar o tema */
-.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg {
-  transform: rotate(90deg);
-}
-.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg mask > circle {
-  transform: translate(16px, -3px);
-}
-.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunMoon {
-  transform: scale(0.55);
-}
-.st-sunMoonThemeToggleBtn .themeToggleInput:checked + svg .sunRay {
-  animation: showRay1832 0.4s ease 0s 1 forwards;
-}
-
-/* Keyframes para animação */
-@keyframes showRay1832 {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
 body input[type="text"],
 body select,
 body #unidadeInput,
 body #email,
 body #usuario {
-  background-color: aliceblue; /* Cor de fundo padrão */
+  background-color: transparent; /* Cor de fundo padrão */
   color: black; /* Cor do texto padrão */
   border-bottom: 1.9px solid #ccc; /* Cor da borda inferior padrão */
-}
-
-body.night-mode input,
-body.night-mode select,
-body.night-mode #unidadeInput,
-body.night-mode #email,
-body.night-mode #usuario {
-  background-color: #333;
-  color: white;
-  border-bottom: 1.9px solid #888;
 }
 
 /* Estilo para a barra de rolagem (scrollbar) padrão */
@@ -671,15 +398,21 @@ body.night-mode #usuario {
   background: #555;
 }
 
-/* Estilo para a barra de rolagem no modo noturno */
-body.night-mode ::-webkit-scrollbar-track {
-  background: #444;
+#downloadBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #595c5f;
 }
 
-body.night-mode ::-webkit-scrollbar-thumb {
-  background: #888;
+#downloadBtn:hover {
+  color: #141414;
 }
 
-body.night-mode ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+#downloadBtn i {
+  font-size: 22px; /* Ajusta o tamanho do ícone */
 }
