@@ -293,10 +293,33 @@ function atualizarListaLogins() {
       servidorInfo.style.fontSize = "11px";
       servidorInfo.style.paddingTop = "0px";
       servidorInfo.style.paddingBottom = "0px";
+      servidorInfo.style.position = "relative";  // Necessário para posicionar o ícone
+
+      // Criar ícone de download
+      let downloadIcon = document.createElement("span");
+      downloadIcon.classList.add("material-icons");
+      downloadIcon.classList.add("download-icon");
+      downloadIcon.textContent = "file_download";  // Ícone de download do Material Icons
+      downloadIcon.style.cursor = "pointer";
+      downloadIcon.style.fontSize = "16px";  // Definir o tamanho pequeno do ícone
+      downloadIcon.style.position = "absolute";  // Para posicionar à direita
+      downloadIcon.style.right = "0px";  // Colocar à direita
+      downloadIcon.style.top = "0";  // Ajustar o alinhamento superior
+      downloadIcon.style.color = "#595c5f";
+
+      // Adicionar evento de clique no ícone para baixar a lista de logins
+      downloadIcon.addEventListener("click", function () {
+        exportLoginsToCSV();
+      });
+
+      // Colocar o ícone à direita do texto do servidor
+      servidorInfo.appendChild(downloadIcon);
+
       listaLogins.appendChild(servidorInfo);
     }
   }
 
+  // Continuação do código original para listar os logins...
   for (let i = 0; i < listaUsuarios.length; i++) {
     let login = listaUsuarios[i];
     let loginItem = document.createElement("div");
@@ -422,6 +445,7 @@ function atualizarListaLogins() {
     listaLogins.appendChild(loginItem);
   }
 }
+
 
 // Função para excluir todos os usuários cadastrados
 function excluirTodosLogins() {
