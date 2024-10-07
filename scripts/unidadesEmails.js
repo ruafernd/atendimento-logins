@@ -1447,6 +1447,12 @@ const unidadesEmails = [
     servidor: "RJ",
   },
   {
+   unidade: "AMOR SAUDE PARQUE DAS PALMEIRAS - RJ",
+   email: "amsparquepalmeiras.com",
+   cnpj: "11.670.188/0001-00",
+   servidor: "RJ"
+  },
+  {
    unidade: "AMOR SAUDE RIO DAS OSTRAS - RJ",
    email: "asriodasostras.com",
    cnpj: "21.664.753/0001-71",
