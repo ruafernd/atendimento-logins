@@ -2563,6 +2563,12 @@ const unidadesEmails = [
     servidor: "BA",
   },
   {
+   unidade: "AMOR SAUDE LAURO DE FREITAS (FILIAL) - BA",
+   email: "amslaurofilial.com",
+   cnpj: "30.351.057/0003-68",
+   servidor: "BA"
+  },
+  {
     unidade: "AMOR SAUDE ALAGOINHAS - BA",
     email: "asalagoinhas.com",
     cnpj: "34.447.957/0001-00",
