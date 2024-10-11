@@ -1921,6 +1921,12 @@ const unidadesEmails = [
     servidor: "Norte",
   },
   {
+   unidade: "AMOR SAUDE CACOAL - NORTE",
+   email: "amscacoal.com",
+   cnpj: "52.798.379/0001-20",
+   servidor: "Norte"
+  },
+  {
     unidade: "AMOR SAUDE MACAPA - NORTE",
     email: "asmacapa.com",
     cnpj: "28.740.370/0001-84",
