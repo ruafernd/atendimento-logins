@@ -1669,8 +1669,8 @@ const unidadesEmails = [
     servidor: "ES",
   },
   {
-    unidade: "AMOR SAUDE GUIRI - ES",
-    email: "amsguiri.com",
+    unidade: "AMOR SAUDE GURIRI - ES",
+    email: "amsguriri.com",
     cnpj: "22.637.515/0001-30",
     servidor: "ES",
   },
